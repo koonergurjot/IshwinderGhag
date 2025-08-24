@@ -41,6 +41,11 @@
   color: #d71920;
 }
 
+[data-theme="dark"] .btn.ghost {
+  border-color: #f87171;
+  color: #f87171;
+}
+
 .pill {
   display: inline-block;
   padding: 0.25rem 0.75rem;
