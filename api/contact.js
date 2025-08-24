@@ -19,10 +19,14 @@ exports.handler = async (event) => {
   try {
     let data;
     const contentType = event.headers['content-type'] || '';
+    const rawBody = event.body || '';
+    const body = event.isBase64Encoded
+      ? Buffer.from(rawBody, 'base64').toString('utf8')
+      : rawBody;
     if (contentType.includes('application/json')) {
-      data = JSON.parse(event.body || '{}');
+      data = JSON.parse(body || '{}');
     } else {
-      data = qs.parse(event.body || '');
+      data = qs.parse(body || '');
     }
     const name = sanitize(data.name);
     const email = sanitize(data.email);
