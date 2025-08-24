@@ -1,0 +1,13 @@
+{
+  "name": "ishwinderghag",
+  "version": "1.0.0",
+  "description": "Static site for Ishwinder Ghag",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"No tests specified\""
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
