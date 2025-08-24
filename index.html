@@ -768,6 +768,26 @@
     })();
       // Calculators, widgets & quiz
     (function(){
+      function sanitize(str){
+        const div=document.createElement('div');
+        div.textContent=str==null?'':String(str);
+        return div.textContent;
+      }
+      function sanitizeNumberString(str){
+        return (str||'').replace(/[^\d.-]/g,'');
+      }
+      function parseNum(val){
+        return parseFloat(sanitizeNumberString(val))||0;
+      }
+      function attachNumericSanitizer(el){
+        if(!el) return;
+        el.addEventListener('input',()=>{
+          const clean=sanitizeNumberString(el.value);
+          if(el.value!==clean) el.value=clean;
+        });
+      }
+      function clear(el){ while(el && el.firstChild) el.removeChild(el.firstChild); }
+
       // Cap rate
       const noi = document.getElementById('noi');
       const price = document.getElementById('capPrice');
@@ -887,37 +907,80 @@ I am an ' + v + ' interested in touring...'); }
       if(laCopy && !navigator.clipboard){ laCopy.style.display='none'; }
       function renderShareInputs(n){
         const method = (document.querySelector('input[name="laMethod"]:checked')||{}).value || 'equal';
-        laShares.innerHTML = '';
+        clear(laShares);
         if(method==='share'){
           const wrap = document.createElement('div');
           wrap.className='grid';
           for(let i=1;i<=n;i++){
-            const p=document.createElement('p'); p.className='col-4';
-            p.innerHTML = `<label>Share #${i}</label><input type="number" step="0.01" value="1" id="laS${i}">`;
+            const p=document.createElement('p');
+            p.className='col-4';
+            const label=document.createElement('label');
+            label.textContent=sanitize(`Share #${i}`);
+            const input=document.createElement('input');
+            input.type='number';
+            input.step='0.01';
+            input.value='1';
+            input.id='laS'+i;
+            attachNumericSanitizer(input);
+            p.appendChild(label);
+            p.appendChild(input);
             wrap.appendChild(p);
           }
           laShares.appendChild(wrap);
-          const hint=document.createElement('p'); hint.className='small'; hint.textContent='Enter frontage/area weights (any units). Amounts are proportional to these shares.';
+          const hint=document.createElement('p');
+          hint.className='small';
+          hint.textContent='Enter frontage/area weights (any units). Amounts are proportional to these shares.';
           laShares.appendChild(hint);
         }
       }
       function currency(x){ return '$' + (x||0).toLocaleString(undefined,{maximumFractionDigits:0}); }
       function laCalc(){
-        const total = parseFloat(laTotal.value||'0');
-        const n = Math.max(1, parseInt(laCount.value||'1',10));
+        const total = parseNum(laTotal.value);
+        const n = Math.max(1, parseInt(parseNum(laCount.value)||1,10));
         const method = (document.querySelector('input[name="laMethod"]:checked')||{}).value || 'equal';
         let shares = new Array(n).fill(1);
         if(method==='share'){
-          shares = shares.map((_,i)=>parseFloat((document.getElementById('laS'+(i+1))||{}).value||'0')||0);
+          shares = shares.map((_,i)=>parseNum((document.getElementById('laS'+(i+1))||{}).value));
           const sum = shares.reduce((a,b)=>a+b,0)||1; shares = shares.map(s=>s/sum);
         }else{ shares = shares.map(()=>1/n); }
-        let rows = '';
-        shares.forEach((s,i)=>{ const amt = total*s; rows += `<tr><td>Owner ${i+1}</td><td>${(s*100).toFixed(2)}%</td><td style="text-align:right">${currency(amt)}</td></tr>`; });
-        laTable.innerHTML = `<table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left">Owner</th><th style="text-align:left">Share</th><th style="text-align:right">Amount</th></tr></thead><tbody>${rows}</tbody></table>`;
+        clear(laTable);
+        const table=document.createElement('table');
+        table.style.width='100%';
+        table.style.borderCollapse='collapse';
+        const thead=document.createElement('thead');
+        const headRow=document.createElement('tr');
+        ['Owner','Share','Amount'].forEach((h,idx)=>{
+          const th=document.createElement('th');
+          th.style.textAlign=idx===2?'right':'left';
+          th.textContent=sanitize(h);
+          headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+        const tbody=document.createElement('tbody');
+        shares.forEach((s,i)=>{
+          const amt = total*s;
+          const tr=document.createElement('tr');
+          const tdOwner=document.createElement('td');
+          tdOwner.textContent=sanitize(`Owner ${i+1}`);
+          const tdShare=document.createElement('td');
+          tdShare.textContent=sanitize(`${(s*100).toFixed(2)}%`);
+          const tdAmount=document.createElement('td');
+          tdAmount.style.textAlign='right';
+          tdAmount.textContent=sanitize(currency(amt));
+          tr.appendChild(tdOwner);
+          tr.appendChild(tdShare);
+          tr.appendChild(tdAmount);
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        laTable.appendChild(table);
       }
-      if(laCount){ laCount.addEventListener('input',()=>{ renderShareInputs(Math.max(1,parseInt(laCount.value||'1',10))); laCalc(); }); }
-      document.querySelectorAll('input[name="laMethod"]').forEach(r=>r.addEventListener('change',()=>{ renderShareInputs(Math.max(1,parseInt(laCount.value||'1',10))); laCalc(); }));
-      [laTotal].forEach(el=>el&&el.addEventListener('input',laCalc));
+      attachNumericSanitizer(laTotal);
+      attachNumericSanitizer(laCount);
+      if(laCount){ laCount.addEventListener('input',()=>{ renderShareInputs(Math.max(1,parseInt(parseNum(laCount.value)||1,10))); laCalc(); }); }
+      document.querySelectorAll('input[name="laMethod"]').forEach(r=>r.addEventListener('change',()=>{ renderShareInputs(Math.max(1,parseInt(parseNum(laCount.value)||1,10))); laCalc(); }));
+      laTotal&&laTotal.addEventListener('input',laCalc);
       laShares.addEventListener('input', (e)=>{ if(e.target && e.target.tagName==='INPUT') laCalc(); });
       laCopy&&laCopy.addEventListener('click',()=>{
         const txt = laTable.textContent||'';
@@ -937,14 +1000,23 @@ I am an ' + v + ' interested in touring...'); }
       const svlNet=document.getElementById('svlNet');
       const svlOp=document.getElementById('svlOp');
       const svlOut=document.getElementById('svlOut');
+      [svlSize,svlPrice,svlDown,svlRate,svlAmort,svlStrata,svlTax,svlNet,svlOp].forEach(attachNumericSanitizer);
       function payment(P,r,years){ const i=r/12; const n=years*12; return (i>0)? P * (i*Math.pow(1+i,n))/(Math.pow(1+i,n)-1):(P/n); }
       function svl(){
-        const size=+svlSize.value||0; const price=+svlPrice.value||0; const down=+svlDown.value||0; const rate=(+svlRate.value||0)/100; const years=+svlAmort.value||25; const strata=+svlStrata.value||0; const taxA=+svlTax.value||0; const net=+svlNet.value||0; const op=+svlOp.value||0;
+        const size=parseNum(svlSize.value);
+        const price=parseNum(svlPrice.value);
+        const down=parseNum(svlDown.value);
+        const rate=parseNum(svlRate.value)/100;
+        const years=parseNum(svlAmort.value)||25;
+        const strata=parseNum(svlStrata.value);
+        const taxA=parseNum(svlTax.value);
+        const net=parseNum(svlNet.value);
+        const op=parseNum(svlOp.value);
         const loan = price * (1 - down/100);
         const monthlyBuy = payment(loan, rate, years) + strata + (taxA/12);
         const monthlyLease = (size * (net+op)) / 12;
         const diff = monthlyBuy - monthlyLease;
-        svlOut.textContent = `Own: ${currency(monthlyBuy)} /mo • Lease: ${currency(monthlyLease)} /mo • Diff: ${diff>=0?'+':''}${currency(diff)} per month`;
+        svlOut.textContent = sanitize(`Own: ${currency(monthlyBuy)} /mo • Lease: ${currency(monthlyLease)} /mo • Diff: ${diff>=0?'+':''}${currency(diff)} per month`);
       }
       [svlSize,svlPrice,svlDown,svlRate,svlAmort,svlStrata,svlTax,svlNet,svlOp].forEach(el=>el&&el.addEventListener('input',svl));
       svl();
