@@ -235,7 +235,13 @@
       ];
       const list = document.getElementById('policyList');
       if(list){
-        policyItems.forEach(i=>{ const li=document.createElement('li'); li.innerHTML=`<strong>${i.title}</strong> — ${i.note}`; list.appendChild(li); });
+        policyItems.forEach(i=>{
+          const li = document.createElement('li');
+          const strong = document.createElement('strong');
+          strong.textContent = i.title;
+          li.append(strong, ` — ${i.note}`);
+          list.appendChild(li);
+        });
       }
 
       // NDA gating (demo code — replace with real VDR)
@@ -443,7 +449,11 @@ I am an ' + v + ' interested in touring...'); }
             throw new Error(json.error||'Error');
           }
         } catch(err){
-          result.innerHTML = 'Unable to send — <a href="mailto:ishwinderghag@gmail.com">email me instead</a>.';
+          result.textContent = 'Unable to send — ';
+          const link = document.createElement('a');
+          link.href = 'mailto:ishwinderghag@gmail.com';
+          link.textContent = 'email me instead';
+          result.append(link, '.');
         }
       });
     })();
