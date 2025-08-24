@@ -58,6 +58,7 @@
     // Simple carousel with controls + keyboard + pause + a11y states
     (function(){
       const root = document.getElementById('carousel');
+      if(!root) return;
       const slides = root.querySelector('.slides');
       const frames = Array.from(slides.children);
       const total = frames.length;
