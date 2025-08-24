@@ -331,11 +331,8 @@
         <div class="grid">
           <div class="col-8 card fade-up"><div class="card-body">
             <h3>Send a message</h3>
-            <!-- Netlify form ready with accessible labels -->
-            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-              <input type="hidden" name="form-name" value="contact">
+            <form id="contactForm" method="POST" action="mailto:ishwinderghag@gmail.com" enctype="text/plain">
               <input type="hidden" name="intent" id="intentHidden" value="">
-              <p class="visually-hidden"><label>Don’t fill this out: <input name="bot-field"></label></p>
               <p>
                 <label class="visually-hidden" for="name">Your name</label>
                 <input id="name" name="name" placeholder="Your name" required autocomplete="name" style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--line)">
@@ -349,8 +346,10 @@
                 <textarea id="message" name="message" rows="5" placeholder="Tell me about your requirement" style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--line)"></textarea>
               </p>
               <button class="btn" type="submit">Send</button>
+              <p id="contactResult" class="small" role="status" aria-live="polite"></p>
             </form>
-            <p class="small" style="margin-top:8px">Submissions go to your Netlify dashboard and can forward to your email.</p>
+            <noscript><p class="small"><a href="mailto:ishwinderghag@gmail.com">Send email</a> (JavaScript disabled)</p></noscript>
+            <p class="small" style="margin-top:8px">Your message will be processed securely. If the form fails, use the email link above.</p>
           </div></div>
           <div class="col-4 card fade-up"><div class="card-body">
             <h3>Contact</h3>
@@ -920,6 +919,34 @@ I am an ' + v + ' interested in touring...'); }
       }
       [yNoi,yCost,yTarget].forEach(el=>el&&el.addEventListener('input',yoc));
       yoc();
+    })();
+
+    // Contact form submission
+    (()=>{
+      const form = document.getElementById('contactForm');
+      const result = document.getElementById('contactResult');
+      if(!form) return;
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form));
+        result.textContent = 'Sending…';
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          const json = await res.json();
+          if(json.success){
+            result.textContent = 'Message sent successfully.';
+            form.reset();
+          }else{
+            throw new Error(json.error||'Error');
+          }
+        } catch(err){
+          result.innerHTML = 'Unable to send — <a href="mailto:ishwinderghag@gmail.com">email me instead</a>.';
+        }
+      });
     })();
   </script>
 </body>
