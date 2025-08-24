@@ -161,10 +161,12 @@
         return div.textContent;
       }
       function sanitizeNumberString(str){
-        return (str||'').replace(/[^\d.-]/g,'');
+        return (str||'').match(/^(-?\d*(?:\.\d*)?)$/)?.[1] ?? '';
       }
       function parseNum(val){
-        return parseFloat(sanitizeNumberString(val))||0;
+        const clean = sanitizeNumberString(val);
+        if(clean==='') return 0;
+        return parseFloat(clean) || 0;
       }
       function attachNumericSanitizer(el){
         if(!el) return;
