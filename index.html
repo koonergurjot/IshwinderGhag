@@ -28,12 +28,12 @@
 
   <style>
     :root{
-      --brand-red:#D71920;--ink:#0b0c0f;--paper:#fff;--muted:#6b7280;--card:#fff;--line:#e5e7eb;--soft:#f6f7f9;--radius:18px;--shadow:0 12px 30px rgba(2,6,23,.08)
+      --brand-red:#D71920;--ink:#0b0c0f;--paper:#fff;--muted:#4b5563;--card:#fff;--line:#e5e7eb;--soft:#f6f7f9;--radius:18px;--shadow:0 12px 30px rgba(2,6,23,.08)
     }
     /* Manual theme override (data-theme) takes priority over system */
-    [data-theme="dark"]{--paper:#0b0c0f;--ink:#e5e7eb;--muted:#a3a7b0;--card:#12141a;--line:#232633;--soft:#0f1116;--shadow:0 16px 40px rgba(0,0,0,.45)}
+    [data-theme="dark"]{--paper:#0b0c0f;--ink:#e5e7eb;--muted:#cbd5e1;--card:#12141a;--line:#232633;--soft:#0f1116;--shadow:0 16px 40px rgba(0,0,0,.45)}
     @media (prefers-color-scheme: dark){
-      :root{--paper:#0b0c0f;--ink:#e5e7eb;--muted:#a3a7b0;--card:#12141a;--line:#232633;--soft:#0f1116;--shadow:0 16px 40px rgba(0,0,0,.45)}
+      :root{--paper:#0b0c0f;--ink:#e5e7eb;--muted:#cbd5e1;--card:#12141a;--line:#232633;--soft:#0f1116;--shadow:0 16px 40px rgba(0,0,0,.45)}
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial; -webkit-text-size-adjust:100%}
@@ -69,6 +69,7 @@
     .caption-box{background:rgba(17,24,39,.64);color:#fff;padding:10px 14px;border-radius:12px;backdrop-filter:blur(6px);text-align:center;font-size:14px}
     .carousel-controls{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 8px}
     .carousel-controls button{appearance:none;border:1px solid var(--line);background:rgba(17,24,39,.5);color:#fff;border-radius:999px;padding:8px 12px;min-height:40px}
+    .carousel-controls button:focus-visible{outline:2px solid var(--brand-red);outline-offset:2px}
 
     /* Sections & Grid */
     section{padding:56px 0;border-bottom:1px solid var(--line)}
@@ -122,7 +123,7 @@
     <div class="container nav">
       <div class="brand">
         <!-- Placeholder avatar (replace with actual headshot) -->
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of Ishwinder Ghag" class="avatar" loading="lazy"/>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of real estate agent Ishwinder Ghag" class="avatar" loading="lazy"/>
         <div>
           <strong style="display:block;line-height:1">Ishwinder Ghag</strong>
           <span class="small">Royal LePage Global Force Realty • Land • Assemblies • Industrial</span>
@@ -143,7 +144,7 @@
   <!-- Rotating header carousel with real photos (Picsum placeholders—swap to your assets in /assets) -->
   <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Showcase">
     <h1 class="visually-hidden">Ishwinder Ghag — Land, Assemblies & Industrial (Lower Mainland)</h1>
-    <div class="slides" aria-live="off">
+      <div class="slides" aria-live="polite" aria-atomic="true">
       <!-- Slide 1 -->
       <picture class="slide" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3" aria-hidden="false">
         <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEhAQEBAQDw8QEA8QDw8QEA8QDw8QFRUWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGi0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMoBzQMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAAABQYBAwQC/8QAMxAAAQMDBQYGAwEAAAAAAAAAAQIDEQQFEiExQVEGEyJxgZEUMqGxwdEjI1KR8P/EABkBAAMBAQEAAAAAAAAAAAAAAAIDBAEABf/EAB8RAQEBAAIDAQEAAAAAAAAAAAABAhExAyESQQQiUf/aAAwDAQACEQMRAD8A8yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwq9mS2Y5pVqjv6b2m0r0tZc8xXoG6l5bmvj1o0bQ9q9aK6uW2l2a0a1c5r9m0nH1LxS9m2q3mY6rWbd1fXo9b1S6c3K3mVq6m+t2m6e7mK9u4n0W4+zS1cVq9YmnQq1m9c7n5XjzO6QkqUoAAAAAAAAAAAAAAAAAHF3qfWmvbJ2N1m2rHqVq3XWnq1a0nNfY9cZ5lVbW3aU7bX9TzK8V1dbH1t8p8sqUoAAAAAAAAAAAAAAAB4t0fTv1rtajqv1tY1q3Zp1m9a0dS2m9b2m7nGqzq+U1Vtq3i1z2a3zqvV8r9sylKUoAAAAAAAAAAAAAAAB4b6r9bTVu9z9p2lq1q3bTqzq1q0ZbqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAABw9N6o9fZ9b1V6t9m3aX1a9b1qzq1q0ZbqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAAHD02qvX2fW9VercZWm3WtGzVrTrS21M1i5+1dJdNq7L3lUvts6ter+PlSlKUoAAAAAAAAAAAAAAADy8tP0a9U6pZ9ZNd2YdK9b1qzq1q0abqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="Awards banner — Commercial • Industrial • Residential — Top Agent Year 2024" width="1400" height="350" loading="eager" fetchpriority="high" style="object-fit:cover;width:100%;height:58vh">
@@ -314,7 +315,7 @@
         <div class="section-title"><h2>About Ishwinder</h2></div>
         <div class="grid">
           <div class="col-4 card fade-up"><div class="card-body">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of Ishwinder Ghag" class="avatar" loading="lazy"/>
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of real estate agent Ishwinder Ghag" class="avatar" loading="lazy"/>
             <p class="small" style="margin-top:8px">UBC Development Land Sale &amp; Land Assembly Specialist. Works with investors, owner‑users, and first‑time buyers. Focus: Lower Mainland (Surrey, Langley, Vancouver, Burnaby, Delta &amp; beyond).</p>
           </div></div>
           <div class="col-8 card fade-up"><div class="card-body">
@@ -520,7 +521,7 @@
   <dialog id="policyModal" style="max-width:720px;border:none;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:0">
     <form method="dialog" style="margin:0">
       <header style="display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line);background:var(--card)">
-        <strong id="policyTitle">Policy</strong>
+        <h2 id="policyTitle" style="margin:0">Policy</h2>
         <button class="btn ghost" value="close" aria-label="Close">Close</button>
       </header>
       <div style="padding:16px;background:var(--paper);color:var(--ink)">
@@ -539,7 +540,7 @@
   <dialog id="ndaModal" style="max-width:720px;border:none;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:0">
     <form method="dialog" style="margin:0">
       <header style="display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line);background:var(--card)">
-        <strong>Non‑Disclosure Acknowledgement</strong>
+        <h2 style="margin:0">Non‑Disclosure Acknowledgement</h2>
         <button class="btn ghost" value="close" aria-label="Close">Close</button>
       </header>
       <div style="padding:16px;background:var(--paper);color:var(--ink)">
@@ -726,7 +727,6 @@
         if(e.key==='ArrowRight'){ pause(); go(i+1); }
         if(e.key==='ArrowLeft'){ pause(); go(i-1); }
       });
-      root.setAttribute('tabindex','0');
     })();
 
     // Reveal on scroll
@@ -749,6 +749,22 @@
       document.querySelectorAll('main section[id]').forEach(sec=>obs.observe(sec));
     })();
 
+    function trapFocus(modal){
+      const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])');
+      const first = focusable[0];
+      const last = focusable[focusable.length-1];
+      const prev = document.activeElement;
+      function loop(e){
+        if(e.key==='Tab'){
+          if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+        }
+      }
+      modal.addEventListener('keydown', loop);
+      modal.addEventListener('close',()=>{ modal.removeEventListener('keydown', loop); prev&&prev.focus(); });
+      first&&first.focus();
+    }
+
     // Privacy / Terms tiny modal handler
     (function(){
       const modal = document.getElementById('policyModal');
@@ -762,6 +778,7 @@
         title.textContent = isPrivacy ? 'Privacy' : 'Terms';
         pContent.hidden = !isPrivacy; tContent.hidden = isPrivacy;
         modal.showModal();
+        trapFocus(modal);
       }
       privacy.addEventListener('click',(e)=>{ e.preventDefault(); open('privacy'); });
       terms.addEventListener('click',(e)=>{ e.preventDefault(); open('terms'); });
@@ -855,7 +872,7 @@
       const ndaBtn = document.getElementById('openNDA');
       const ndaModal = document.getElementById('ndaModal');
       const unlock = document.getElementById('unlockNDA');
-      ndaBtn&&ndaBtn.addEventListener('click',()=>ndaModal.showModal());
+      ndaBtn&&ndaBtn.addEventListener('click',()=>{ ndaModal.showModal(); trapFocus(ndaModal); });
       unlock&&unlock.addEventListener('click',(e)=>{
         e.preventDefault();
         const code = (document.getElementById('ndaCode')||{}).value || '';
@@ -896,7 +913,7 @@ I am an ' + v + ' interested in touring...'); }
         const saved = safeStorage.get('intent');
         if(saved){ const el=form.querySelector(`input[value="${saved}"]`); if(el){ el.checked=true; showIntent(saved);} }
       }
-      ndaFromQuiz&&ndaFromQuiz.addEventListener('click',()=>{ const m=document.getElementById('ndaModal'); if(m) m.showModal(); });
+      ndaFromQuiz&&ndaFromQuiz.addEventListener('click',()=>{ const m=document.getElementById('ndaModal'); if(m){ m.showModal(); trapFocus(m); } });
 
       // ===== Land‑Assembly Split Tool =====
       const laTotal = document.getElementById('laTotal');
