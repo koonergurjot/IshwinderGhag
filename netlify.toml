@@ -1,6 +1,4 @@
-# Netlify configuration
 [build]
   command = ""
   publish = "."
   functions = "api"
-# serverless functions path: api/contact.js
