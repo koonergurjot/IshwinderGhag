@@ -36,11 +36,18 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "Ishwinder Ghag", "url": "", "brand": {"@type": "Brand", "name": "Royal LePage Global Force Realty"}, "telephone": "+1-604-537-4334", "image": "/assets/ishwinder/headshot-640.jpg"}</script>
 </head>
 <body>
   <a class="visually-hidden" href="#main">Skip to content</a>
 
   <header>
+<!-- Analytics (replace data-domain with your domain) -->
+<script defer data-domain="your-domain.example" src="https://plausible.io/js/plausible.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+
     <div class="container nav">
       <div class="brand">
         <!-- Placeholder avatar (replace with actual headshot) -->
@@ -269,7 +276,7 @@
         <div class="grid">
           <div class="col-8 card fade-up"><div class="card-body">
             <h3 id="contactFormTitle">Send a message</h3>
-            <form id="contactForm" method="POST"  method="POST" data-netlify="true" data-netlify-honeypot="website" data-spam-protect  enctype="text/plain" aria-labelledby="contactFormTitle">
+            \1 action="/thanks.html"\2
 <input type="hidden" name="form-name" value="contact">
               <input type="hidden" name="intent" id="intentHidden" value="">
                 <p>
@@ -403,7 +410,7 @@
         <div class="section-title"><h2 id="getCompsTitle">Get Comps & Market Brief</h2></div>
         <div class="grid">
           <div class="card col-8 fade-up"><div class="card-body">
-            <form name="get-comps" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-labelledby="getCompsTitle">
+            \1 action="/thanks.html"\2
               <input type="hidden" name="form-name" value="get-comps">
               <input type="hidden" name="intent" id="gcIntent" value="">
               <p class="visually-hidden"><label>Don’t fill this out: <input name="bot-field"></label></p>
@@ -440,7 +447,12 @@
       </div>
     </section>
 
-  <section id="shortlist" class="container">
+  
+<div id="lead-quiz"></div>
+<div id="listing-app"></div>
+<div id="testimonials"></div>
+
+<section id="shortlist" class="container">
   <div class="section-title"><h2>Shortlist ⭐</h2><span class="small">Saved listings appear here</span></div>
   <div id="shortlist-cards" class="grid"></div>
 </section>
@@ -534,5 +546,18 @@
     window.initForms?.();
   });
 </script>
+
+<script defer src="/js/listings.data.js"></script>
+<script defer src="/js/listings.render.js"></script>
+<script defer src="/js/quiz.js"></script>
+<script defer src="/js/testimonials.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', ()=>{
+    window.renderListingsUI?.('#listing-app');
+    window.initQuiz?.();
+    window.initTestimonials?.();
+  });
+</script>
+
 </body>
 </html>
