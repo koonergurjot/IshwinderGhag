@@ -429,34 +429,3 @@ I am an ' + v + ' interested in touring...'); }
       yoc();
     })();
 
-    // Contact form submission
-    (()=>{
-      const form = document.getElementById('contactForm');
-      const result = document.getElementById('contactResult');
-      if(!form) return;
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(form));
-        result.textContent = 'Sending…';
-        try {
-          const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          const json = await res.json();
-          if(json.success){
-            result.textContent = 'Message sent successfully.';
-            form.reset();
-          }else{
-            throw new Error(json.error||'Error');
-          }
-        } catch(err){
-          result.textContent = 'Unable to send — ';
-          const link = document.createElement('a');
-          link.href = 'mailto:ishwinderghag@gmail.com';
-          link.textContent = 'email me instead';
-          result.append(link, '.');
-        }
-      });
-    })();

@@ -272,8 +272,10 @@
         <div class="grid">
           <div class="col-8 card fade-up"><div class="card-body">
             <h3 id="contactFormTitle">Send a message</h3>
-            <form id="contactForm" method="POST" action="mailto:ishwinderghag@gmail.com" enctype="text/plain" aria-labelledby="contactFormTitle">
+            <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-labelledby="contactFormTitle">
+              <input type="hidden" name="form-name" value="contact">
               <input type="hidden" name="intent" id="intentHidden" value="">
+              <p class="visually-hidden"><label>Don’t fill this out: <input name="bot-field"></label></p>
                 <p>
                   <label class="visually-hidden" for="name">Your name</label>
                   <input id="name" name="name" placeholder="Your name" required autocomplete="name" class="w-full p-3.5 rounded-xl border border-[var(--line)]">
