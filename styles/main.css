@@ -133,7 +133,7 @@ section{ padding: clamp(1.25rem, 3vw, 2.25rem) 0; }
 .card:hover{ box-shadow: var(--shadow-md); transform: translateY(-2px); transition: box-shadow .2s ease, transform .2s ease; }
 .card-body{ padding: 1rem 1rem; }
 
-.listing-photo{ aspect-ratio: 16 / 9; object-fit: cover; }
+.listing-photo{ aspect-ratio: 16 / 9; object-fit: cover; width:100%; height:auto; }
 
 .meta{ color: var(--muted); margin:.35rem 0 .5rem; }
 .price{ font-size: 1.25rem; color: var(--ink); }

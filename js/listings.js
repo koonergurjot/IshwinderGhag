@@ -25,7 +25,7 @@ function renderListings(selector){
       <a href="${item.gallery[0]}" data-gallery class="block">
         <picture>
           <source type="image/webp" srcset="${item.cover.replace('.jpg','.webp')}">
-          <img class="listing-photo" src="${item.cover}" alt="${item.title}">
+          <img class="listing-photo" src="${item.cover}" alt="${item.title}" width="640" height="360">
         </picture>
       </a>
       <div class="card-body">

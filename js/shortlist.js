@@ -56,7 +56,7 @@
   function tpl(it){
     return `
     <article class="card col-6" data-id="${it.id}">
-      <img src="${it.img}" alt="" class="listing-photo">
+      <img src="${it.img}" alt="" class="listing-photo" width="640" height="360">
       <div class="card-body">
         <h3 class="m-0">${it.title}</h3>
         <div class="meta">${it.price}</div>

@@ -25,7 +25,7 @@
 <body>
   <header class="header">
     <div class="brand">
-      <img src="/assets/avatar.png" alt="">
+      <img src="/assets/avatar.png" alt="" width="28" height="28">
       <div><strong>${document.title||'Real Estate'}</strong><div class="meta">${new Date().toLocaleDateString()}</div></div>
     </div>
     <span class="badge">${escapeHtml(data.badge || 'Featured')}</span>
@@ -34,7 +34,7 @@
   <h1>${escapeHtml(data.title)}</h1>
   <div class="meta">${escapeHtml(data.address)} ${data.price?'• '+escapeHtml(data.price):''}</div>
 
-  <img class="hero" src="${data.hero}" alt="">
+  <img class="hero" src="${data.hero}" alt="" width="1280" height="720">
 
   <section class="section">
     <h2>Property details</h2>

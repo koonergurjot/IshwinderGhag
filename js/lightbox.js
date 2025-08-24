@@ -12,7 +12,7 @@
       <div class="lb-wrap" tabindex="-1">
         <button class="lb-close" aria-label="Close (Esc)">×</button>
         <button class="lb-prev" aria-label="Previous">‹</button>
-        <img class="lb-img" alt="">
+        <img class="lb-img" alt="" width="1600" height="900">
         <button class="lb-next" aria-label="Next">›</button>
         <div class="lb-caption" aria-live="polite"></div>
       </div>`;
