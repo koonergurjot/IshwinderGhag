@@ -1,8 +1,7 @@
 const qs = require('querystring');
+const sanitizeHtml = require('sanitize-html');
 
-function sanitize(str){
-  return String(str || '').replace(/<[^>]*>?/gm, '').trim();
-}
+const sanitize = (str) => sanitizeHtml(str, {allowedTags: [], allowedAttributes: {}});
 
 exports.handler = async (event) => {
   const headers = { 'Content-Type': 'application/json' };
