@@ -627,12 +627,50 @@
   }
   </script>
 
-  <script defer>
-    // Respect stored theme preference
-    (function(){
-      const stored = localStorage.getItem('theme');
-      if(stored === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
-    })();
+    <script defer>
+      const safeStorage = (()=>{
+        let warned = false;
+        function warn(e){
+          if(!warned){
+            warned = true;
+            console.warn('Storage access failed', e);
+            alert('Storage features are disabled in your browser.');
+          }
+        }
+        return {
+          get(key){
+            try{ return localStorage.getItem(key); }
+            catch(e){ warn(e); return null; }
+          },
+          set(key, value){
+            try{ localStorage.setItem(key, value); }
+            catch(e){ warn(e); }
+          },
+          remove(key){
+            try{ localStorage.removeItem(key); }
+            catch(e){ warn(e); }
+          }
+        };
+      })();
+
+      const safeClipboard = {
+        async write(text){
+          try{
+            if(!navigator.clipboard) throw new Error('Clipboard API unavailable');
+            await navigator.clipboard.writeText(text);
+          }catch(e){
+            console.warn('Clipboard write failed', e);
+            alert('Clipboard unavailable');
+            throw e;
+          }
+        }
+      };
+
+      // Respect stored theme preference
+      (function(){
+        const stored = safeStorage.get('theme');
+        if(stored === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+      })();
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -642,8 +680,8 @@
     if(themeBtn){
       themeBtn.addEventListener('click',()=>{
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        if(isDark){ document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('theme'); themeBtn.setAttribute('aria-pressed','false'); }
-        else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark'); themeBtn.setAttribute('aria-pressed','true'); }
+        if(isDark){ document.documentElement.removeAttribute('data-theme'); safeStorage.remove('theme'); themeBtn.setAttribute('aria-pressed','false'); }
+        else { document.documentElement.setAttribute('data-theme','dark'); safeStorage.set('theme','dark'); themeBtn.setAttribute('aria-pressed','true'); }
       });
     }
 
@@ -766,6 +804,7 @@
       const cfo = document.getElementById('cfo');
       const cfoOut = document.getElementById('cfoCountdown');
       const shareBtn = document.getElementById('shareCFO');
+      if(shareBtn && !navigator.clipboard){ shareBtn.style.display='none'; }
       let cfoTimer=null;
       function tick(){
         if(!cfo.value){ cfoOut.textContent='Set a deadline to start the live countdown.'; return; }
@@ -779,8 +818,7 @@
       cfo&&cfo.addEventListener('input',()=>{clearInterval(cfoTimer); tick(); cfoTimer=setInterval(tick,1000)});
       shareBtn&&shareBtn.addEventListener('click',()=>{
         const text = cfo.value ? `Call for Offers closes ${new Date(cfo.value).toLocaleString()}` : 'Call for Offers date coming soon.';
-        navigator.clipboard && navigator.clipboard.writeText(text);
-        shareBtn.textContent='Copied!'; setTimeout(()=>shareBtn.textContent='Copy share text',1200);
+        safeClipboard.write(text).then(()=>{ shareBtn.textContent='Copied!'; setTimeout(()=>shareBtn.textContent='Copy share text',1200); }).catch(()=>{});
       });
 
       // Policy Watch (editable items)
@@ -821,7 +859,7 @@
       const ndaFromQuiz = document.getElementById('openNDAFromQuiz');
       function showIntent(v){
         if(!v) return;
-        localStorage.setItem('intent', v);
+        safeStorage.set('intent', v);
         if(intentHidden) intentHidden.value = v;
         if(gcIntent) gcIntent.value = v;
         ctas.style.display = 'block';
@@ -836,7 +874,7 @@ I am an ' + v + ' interested in touring...'); }
       if(form){
         form.addEventListener('change', (e)=>{ if(e.target && e.target.name==='intent'){ showIntent(e.target.value); } });
         // preload saved
-        const saved = localStorage.getItem('intent');
+        const saved = safeStorage.get('intent');
         if(saved){ const el=form.querySelector(`input[value="${saved}"]`); if(el){ el.checked=true; showIntent(saved);} }
       }
       ndaFromQuiz&&ndaFromQuiz.addEventListener('click',()=>{ const m=document.getElementById('ndaModal'); if(m) m.showModal(); });
@@ -847,6 +885,7 @@ I am an ' + v + ' interested in touring...'); }
       const laShares = document.getElementById('laShares');
       const laTable = document.getElementById('laTable');
       const laCopy = document.getElementById('laCopy');
+      if(laCopy && !navigator.clipboard){ laCopy.style.display='none'; }
       function renderShareInputs(n){
         const method = (document.querySelector('input[name="laMethod"]:checked')||{}).value || 'equal';
         laShares.innerHTML = '';
@@ -882,7 +921,8 @@ I am an ' + v + ' interested in touring...'); }
       [laTotal].forEach(el=>el&&el.addEventListener('input',laCalc));
       laShares.addEventListener('input', (e)=>{ if(e.target && e.target.tagName==='INPUT') laCalc(); });
       laCopy&&laCopy.addEventListener('click',()=>{
-        const txt = laTable.textContent||''; navigator.clipboard && navigator.clipboard.writeText(txt); laCopy.textContent='Copied!'; setTimeout(()=>laCopy.textContent='Copy summary',1200);
+        const txt = laTable.textContent||'';
+        safeClipboard.write(txt).then(()=>{ laCopy.textContent='Copied!'; setTimeout(()=>laCopy.textContent='Copy summary',1200); }).catch(()=>{});
       });
       // init
       if(laCount){ renderShareInputs(parseInt(laCount.value,10)); laCalc(); }
