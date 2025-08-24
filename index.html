@@ -38,7 +38,8 @@
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial; -webkit-text-size-adjust:100%}
     img{max-width:100%;display:block}
-    [loading="lazy"]{content-visibility:auto}
+    img[data-src]{content-visibility:auto;opacity:0;transition:opacity .5s}
+    img[data-src].loaded{opacity:1}
     a{color:var(--brand-red);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{width:min(1100px,92%);margin-inline:auto}
@@ -114,6 +115,7 @@
     input, select, textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line)}
     label{display:block;font-size:13px;color:var(--muted);margin:6px 0}
   </style>
+  <noscript><style>img[data-src]{display:none}</style></noscript>
 </head>
 <body>
   <a class="visually-hidden" href="#main">Skip to content</a>
@@ -122,7 +124,7 @@
     <div class="container nav">
       <div class="brand">
         <!-- Placeholder avatar (replace with actual headshot) -->
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of Ishwinder Ghag" class="avatar" loading="lazy"/>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of Ishwinder Ghag" class="avatar"/>
         <div>
           <strong style="display:block;line-height:1">Ishwinder Ghag</strong>
           <span class="small">Royal LePage Global Force Realty • Land • Assemblies • Industrial</span>
@@ -150,16 +152,30 @@
       </picture>
       <!-- Slide 2 -->
       <picture class="slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3" aria-hidden="true">
-        <source type="image/avif" srcset="https://picsum.photos/id/1003/800/450.avif 800w, https://picsum.photos/id/1003/1200/675.avif 1200w, https://picsum.photos/id/1003/1600/900.avif 1600w" sizes="100vw">
-        <source type="image/jpeg" srcset="https://picsum.photos/id/1003/800/450 800w, https://picsum.photos/id/1003/1200/675 1200w, https://picsum.photos/id/1003/1600/900 1600w" sizes="100vw">
-        <img src="https://picsum.photos/id/1003/1600/900" alt="Development land with skyline in background" width="1600" height="900" loading="lazy">
+        <source type="image/avif" data-srcset="https://picsum.photos/id/1003/800/450.avif 800w, https://picsum.photos/id/1003/1200/675.avif 1200w, https://picsum.photos/id/1003/1600/900.avif 1600w" sizes="100vw">
+        <source type="image/jpeg" data-srcset="https://picsum.photos/id/1003/800/450 800w, https://picsum.photos/id/1003/1200/675 1200w, https://picsum.photos/id/1003/1600/900 1600w" sizes="100vw">
+        <img data-src="https://picsum.photos/id/1003/1600/900" alt="Development land with skyline in background" width="1600" height="900">
       </picture>
+      <noscript>
+        <picture class="slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3" aria-hidden="true">
+          <source type="image/avif" srcset="https://picsum.photos/id/1003/800/450.avif 800w, https://picsum.photos/id/1003/1200/675.avif 1200w, https://picsum.photos/id/1003/1600/900.avif 1600w" sizes="100vw">
+          <source type="image/jpeg" srcset="https://picsum.photos/id/1003/800/450 800w, https://picsum.photos/id/1003/1200/675 1200w, https://picsum.photos/id/1003/1600/900 1600w" sizes="100vw">
+          <img src="https://picsum.photos/id/1003/1600/900" alt="Development land with skyline in background" width="1600" height="900">
+        </picture>
+      </noscript>
       <!-- Slide 3 -->
       <picture class="slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3" aria-hidden="true">
-        <source type="image/avif" srcset="https://picsum.photos/id/1043/800/450.avif 800w, https://picsum.photos/id/1043/1200/675.avif 1200w, https://picsum.photos/id/1043/1600/900.avif 1600w" sizes="100vw">
-        <source type="image/jpeg" srcset="https://picsum.photos/id/1043/800/450 800w, https://picsum.photos/id/1043/1200/675 1200w, https://picsum.photos/id/1043/1600/900 1600w" sizes="100vw">
-        <img src="https://picsum.photos/id/1043/1600/900" alt="Commercial corridor in Metro Vancouver" width="1600" height="900" loading="lazy">
+        <source type="image/avif" data-srcset="https://picsum.photos/id/1043/800/450.avif 800w, https://picsum.photos/id/1043/1200/675.avif 1200w, https://picsum.photos/id/1043/1600/900.avif 1600w" sizes="100vw">
+        <source type="image/jpeg" data-srcset="https://picsum.photos/id/1043/800/450 800w, https://picsum.photos/id/1043/1200/675 1200w, https://picsum.photos/id/1043/1600/900 1600w" sizes="100vw">
+        <img data-src="https://picsum.photos/id/1043/1600/900" alt="Commercial corridor in Metro Vancouver" width="1600" height="900">
       </picture>
+      <noscript>
+        <picture class="slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3" aria-hidden="true">
+          <source type="image/avif" srcset="https://picsum.photos/id/1043/800/450.avif 800w, https://picsum.photos/id/1043/1200/675.avif 1200w, https://picsum.photos/id/1043/1600/900.avif 1600w" sizes="100vw">
+          <source type="image/jpeg" srcset="https://picsum.photos/id/1043/800/450 800w, https://picsum.photos/id/1043/1200/675 1200w, https://picsum.photos/id/1043/1600/900 1600w" sizes="100vw">
+          <img src="https://picsum.photos/id/1043/1600/900" alt="Commercial corridor in Metro Vancouver" width="1600" height="900">
+        </picture>
+      </noscript>
     </div>
     <div class="carousel-caption"><div class="caption-box">Lower Mainland Land, Assemblies & Industrial • Royal LePage Global Force Realty</div></div>
     <div class="carousel-controls" aria-label="Carousel controls">
@@ -212,10 +228,17 @@
           <!-- Listing 1: 17895 96 Ave, Surrey (Port Kells) -->
           <article class="card col-6 fade-up" itemscope itemtype="https://schema.org/RealEstateListing">
             <picture itemprop="image">
-              <source type="image/avif" srcset="https://picsum.photos/id/1062/640/360.avif 640w, https://picsum.photos/id/1062/960/540.avif 960w, https://picsum.photos/id/1062/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
-              <source type="image/jpeg" srcset="https://picsum.photos/id/1062/640/360 640w, https://picsum.photos/id/1062/960/540 960w, https://picsum.photos/id/1062/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
-              <img class="listing-photo" src="https://picsum.photos/id/1062/1280/720" alt="Port Kells light industrial lot" width="1280" height="720" loading="lazy" style="width:100%;height:auto;display:block">
+              <source type="image/avif" data-srcset="https://picsum.photos/id/1062/640/360.avif 640w, https://picsum.photos/id/1062/960/540.avif 960w, https://picsum.photos/id/1062/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
+              <source type="image/jpeg" data-srcset="https://picsum.photos/id/1062/640/360 640w, https://picsum.photos/id/1062/960/540 960w, https://picsum.photos/id/1062/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
+              <img class="listing-photo" data-src="https://picsum.photos/id/1062/1280/720" alt="Port Kells light industrial lot" width="1280" height="720" style="width:100%;height:auto;display:block">
             </picture>
+            <noscript>
+              <picture itemprop="image">
+                <source type="image/avif" srcset="https://picsum.photos/id/1062/640/360.avif 640w, https://picsum.photos/id/1062/960/540.avif 960w, https://picsum.photos/id/1062/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
+                <source type="image/jpeg" srcset="https://picsum.photos/id/1062/640/360 640w, https://picsum.photos/id/1062/960/540 960w, https://picsum.photos/id/1062/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
+                <img class="listing-photo" src="https://picsum.photos/id/1062/1280/720" alt="Port Kells light industrial lot" width="1280" height="720" style="width:100%;height:auto;display:block">
+              </picture>
+            </noscript>
             <div class="card-body">
               <h3 style="margin:0" itemprop="name">Surrey | 17895 96 Avenue (Port Kells)</h3>
               <div class="meta" itemprop="description">1.544 acres • Corner lot • Designated IL (Light Industrial)</div>
@@ -241,10 +264,17 @@
           <!-- Listing 2: 3271 196 St, Surrey (Campbell Heights) -->
           <article class="card col-6 fade-up" itemscope itemtype="https://schema.org/RealEstateListing">
             <picture itemprop="image">
-              <source type="image/avif" srcset="https://picsum.photos/id/1084/640/360.avif 640w, https://picsum.photos/id/1084/960/540.avif 960w, https://picsum.photos/id/1084/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
-              <source type="image/jpeg" srcset="https://picsum.photos/id/1084/640/360 640w, https://picsum.photos/id/1084/960/540 960w, https://picsum.photos/id/1084/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
-              <img class="listing-photo" src="https://picsum.photos/id/1084/1280/720" alt="Campbell Heights business park parcel" width="1280" height="720" loading="lazy" style="width:100%;height:auto;display:block">
+              <source type="image/avif" data-srcset="https://picsum.photos/id/1084/640/360.avif 640w, https://picsum.photos/id/1084/960/540.avif 960w, https://picsum.photos/id/1084/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
+              <source type="image/jpeg" data-srcset="https://picsum.photos/id/1084/640/360 640w, https://picsum.photos/id/1084/960/540 960w, https://picsum.photos/id/1084/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
+              <img class="listing-photo" data-src="https://picsum.photos/id/1084/1280/720" alt="Campbell Heights business park parcel" width="1280" height="720" style="width:100%;height:auto;display:block">
             </picture>
+            <noscript>
+              <picture itemprop="image">
+                <source type="image/avif" srcset="https://picsum.photos/id/1084/640/360.avif 640w, https://picsum.photos/id/1084/960/540.avif 960w, https://picsum.photos/id/1084/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
+                <source type="image/jpeg" srcset="https://picsum.photos/id/1084/640/360 640w, https://picsum.photos/id/1084/960/540 960w, https://picsum.photos/id/1084/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
+                <img class="listing-photo" src="https://picsum.photos/id/1084/1280/720" alt="Campbell Heights business park parcel" width="1280" height="720" style="width:100%;height:auto;display:block">
+              </picture>
+            </noscript>
             <div class="card-body">
               <h3 style="margin:0" itemprop="name">Surrey | 3271 196 Street (Campbell Heights)</h3>
               <div class="meta" itemprop="description">43,553 sf (0.999 acre) • Campbell Heights Business Park • Light Industrial (IL)</div>
@@ -314,7 +344,7 @@
         <div class="section-title"><h2>About Ishwinder</h2></div>
         <div class="grid">
           <div class="col-4 card fade-up"><div class="card-body">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of Ishwinder Ghag" class="avatar" loading="lazy"/>
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of Ishwinder Ghag" class="avatar"/>
             <p class="small" style="margin-top:8px">UBC Development Land Sale &amp; Land Assembly Specialist. Works with investors, owner‑users, and first‑time buyers. Focus: Lower Mainland (Surrey, Langley, Vancouver, Burnaby, Delta &amp; beyond).</p>
           </div></div>
           <div class="col-8 card fade-up"><div class="card-body">
@@ -664,6 +694,24 @@
           }
         }
       };
+
+      // Lazy load images
+      const lazyImgs = document.querySelectorAll('img[data-src]');
+      const io = new IntersectionObserver((entries, obs)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const img = entry.target;
+            const picture = img.parentNode;
+            if(picture && picture.tagName === 'PICTURE'){
+              picture.querySelectorAll('source[data-srcset]').forEach(s=>{ s.srcset = s.dataset.srcset; });
+            }
+            img.src = img.dataset.src;
+            img.addEventListener('load', ()=>img.classList.add('loaded'), {once:true});
+            obs.unobserve(img);
+          }
+        });
+      });
+      lazyImgs.forEach(img=>io.observe(img));
 
       // Respect stored theme preference
       (function(){
