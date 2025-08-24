@@ -1,0 +1,19 @@
+
+/* Print styles for one-pager */
+@page { size: A4; margin: 14mm; }
+* { box-sizing: border-box; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial; color: #0b1220; }
+h1 { font-size: 20pt; margin: 0 0 6pt; }
+h2 { font-size: 13pt; margin: 12pt 0 4pt; }
+p, li { font-size: 11pt; }
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e5e7eb; padding-bottom: 8pt; margin-bottom: 10pt; }
+.brand { display:flex; align-items:center; gap: 8pt; }
+.brand img { width: 28pt; height: 28pt; border-radius: 6pt; }
+.meta { color:#475569; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; margin-top: 8pt; }
+.hero { width: 100%; border-radius: 8pt; border:1px solid #e5e7eb; }
+.section { margin-top: 10pt; }
+.kv { display:grid; grid-template-columns: 140pt 1fr; gap: 4pt 8pt; }
+.kv dt { font-weight: 700; }
+.badge { display:inline-block; padding: 2pt 6pt; border:1px solid #e5e7eb; border-radius: 9999px; font-size: 9pt; }
+footer { border-top:1px solid #e5e7eb; margin-top: 10pt; padding-top: 6pt; color:#64748b; font-size:10pt; }

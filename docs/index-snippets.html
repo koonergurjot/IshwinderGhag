@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <!-- HEAD additions -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Ishwinder Ghag • Real Estate">
+  <meta property="og:description" content="Featured listings, tools, and market insights.">
+  <meta property="og:image" content="/assets/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <!-- Scripts (defer near end of <body>) -->
+  <script defer src="/js/lightbox.js"></script>
+  <script defer src="/js/shortlist.js"></script>
+  <script defer src="/js/onepager.js"></script>
+  <script defer src="/js/forms.js"></script>
+  <!-- Optional data-driven render -->
+  <script defer src="/js/listings.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      if(window.renderListings){ renderListings('#featured'); } // optional
+      if(window.initLightbox){ initLightbox(); }
+      if(window.initShortlist){ initShortlist(); }
+      if(window.initOnePager){ initOnePager(); }
+      if(window.initForms){ initForms(); }
+    });
+  </script>
+
+  <!-- Example card markup inside your grid -->
+  <section class="container">
+    <div class="section-title"><h2>Featured Listings</h2></div>
+    <div id="featured" class="grid">
+      <article class="card col-6" data-id="123">
+        <a href="/assets/listings/123/cover.jpg" data-gallery class="block">
+          <picture>
+            <source type="image/webp" srcset="/assets/listings/123/cover.webp">
+            <img class="listing-photo" src="/assets/listings/123/cover.jpg" alt="123 Example Ave">
+          </picture>
+        </a>
+        <div class="card-body">
+          <h3 class="m-0 js-title" data-title>123 Example Ave</h3>
+          <div class="meta js-price" data-price>$1,249,900</div>
+          <p class="m-0 js-details" data-details>4 bed • 3 bath • 2,100 sqft • Lot 4,000 sqft</p>
+          <div class="py-3">
+            <button class="btn js-save-listing" aria-pressed="false" title="Save to Shortlist">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 17.27l6.18 3.73-1.64-7.03L21.5 9.24l-7.19-.61L12 2 9.69 8.63 2.5 9.24l4.96 4.73L5.82 21z"/>
+              </svg>
+              Save
+            </button>
+            <button class="btn ghost js-onepager">Download 1‑pager</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Shortlist section anywhere on the page -->
+  <section id="shortlist" class="container">
+    <div class="section-title">
+      <h2>Shortlist ⭐</h2><span class="small">Saved listings appear here</span>
+    </div>
+    <div id="shortlist-cards" class="grid"></div>
+  </section>
+</body>
+</html>
