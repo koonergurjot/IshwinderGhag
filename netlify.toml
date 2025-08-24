@@ -1,6 +1,6 @@
 # Netlify configuration
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = ""
+  publish = "."
   functions = "api"
 # serverless functions path: api/contact.js
