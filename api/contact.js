@@ -4,7 +4,15 @@ const sanitizeHtml = require('sanitize-html');
 const sanitize = (str) => sanitizeHtml(str, {allowedTags: [], allowedAttributes: {}});
 
 exports.handler = async (event) => {
-  const headers = { 'Content-Type': 'application/json' };
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST,OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  };
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers };
+  }
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, headers, body: JSON.stringify({ success: false, error: 'Method Not Allowed' }) };
   }
