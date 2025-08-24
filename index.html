@@ -26,7 +26,8 @@
   <!-- Preload hero image for faster LCP -->
   <link rel="preload" as="image" href="https://picsum.photos/id/1025/1600/900" imagesrcset="https://picsum.photos/id/1025/800/450 800w, https://picsum.photos/id/1025/1200/675 1200w, https://picsum.photos/id/1025/1600/900 1600w" imagesizes="100vw">
 
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
   <a class="visually-hidden" href="#main">Skip to content</a>
@@ -39,7 +40,7 @@
         alt="Portrait of real estate agent Ishwinder Ghag"
         class="avatar" />
         <div>
-          <strong style="display:block;line-height:1">Ishwinder Ghag</strong>
+          <strong class="block leading-none">Ishwinder Ghag</strong>
           <span class="small">Royal LePage Global Force Realty • Land • Assemblies • Industrial</span>
         </div>
       </div>
@@ -61,7 +62,7 @@
       <div class="slides" aria-live="polite" aria-atomic="true">
       <!-- Slide 1 -->
       <picture class="slide" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3" aria-hidden="false">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEhAQEBAQDw8QEA8QDw8QEA8QDw8QFRUWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGi0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMoBzQMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAAABQYBAwQC/8QAMxAAAQMDBQYGAwEAAAAAAAAAAQIDEQQFEiExQVEGEyJxgZEUMqGxwdEjI1KR8P/EABkBAAMBAQEAAAAAAAAAAAAAAAIDBAEABf/EAB8RAQEBAAIDAQEAAAAAAAAAAAABAhExAyESQQQiUf/aAAwDAQACEQMRAD8A8yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwq9mS2Y5pVqjv6b2m0r0tZc8xXoG6l5bmvj1o0bQ9q9aK6uW2l2a0a1c5r9m0nH1LxS9m2q3mY6rWbd1fXo9b1S6c3K3mVq6m+t2m6e7mK9u4n0W4+zS1cVq9YmnQq1m9c7n5XjzO6QkqUoAAAAAAAAAAAAAAAAAHF3qfWmvbJ2N1m2rHqVq3XWnq1a0nNfY9cZ5lVbW3aU7bX9TzK8V1dbH1t8p8sqUoAAAAAAAAAAAAAAAB4t0fTv1rtajqv1tY1q3Zp1m9a0dS2m9b2m7nGqzq+U1Vtq3i1z2a3zqvV8r9sylKUoAAAAAAAAAAAAAAAB4b6r9bTVu9z9p2lq1q3bTqzq1q0ZbqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAABw9N6o9fZ9b1V6t9m3aX1a9b1qzq1q0ZbqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAAHD02qvX2fW9VercZWm3WtGzVrTrS21M1i5+1dJdNq7L3lUvts6ter+PlSlKUoAAAAAAAAAAAAAAADy8tP0a9U6pZ9ZNd2YdK9b1qzq1q0abqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="Awards banner — Commercial • Industrial • Residential — Top Agent Year 2024" width="1400" height="350" loading="eager" fetchpriority="high" style="object-fit:cover;width:100%;height:58vh">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEhAQEBAQDw8QEA8QDw8QEA8QDw8QFRUWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGi0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMoBzQMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAAABQYBAwQC/8QAMxAAAQMDBQYGAwEAAAAAAAAAAQIDEQQFEiExQVEGEyJxgZEUMqGxwdEjI1KR8P/EABkBAAMBAQEAAAAAAAAAAAAAAAIDBAEABf/EAB8RAQEBAAIDAQEAAAAAAAAAAAABAhExAyESQQQiUf/aAAwDAQACEQMRAD8A8yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwq9mS2Y5pVqjv6b2m0r0tZc8xXoG6l5bmvj1o0bQ9q9aK6uW2l2a0a1c5r9m0nH1LxS9m2q3mY6rWbd1fXo9b1S6c3K3mVq6m+t2m6e7mK9u4n0W4+zS1cVq9YmnQq1m9c7n5XjzO6QkqUoAAAAAAAAAAAAAAAAAHF3qfWmvbJ2N1m2rHqVq3XWnq1a0nNfY9cZ5lVbW3aU7bX9TzK8V1dbH1t8p8sqUoAAAAAAAAAAAAAAAB4t0fTv1rtajqv1tY1q3Zp1m9a0dS2m9b2m7nGqzq+U1Vtq3i1z2a3zqvV8r9sylKUoAAAAAAAAAAAAAAAB4b6r9bTVu9z9p2lq1q3bTqzq1q0ZbqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAABw9N6o9fZ9b1V6t9m3aX1a9b1qzq1q0ZbqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAAHD02qvX2fW9VercZWm3WtGzVrTrS21M1i5+1dJdNq7L3lUvts6ter+PlSlKUoAAAAAAAAAAAAAAADy8tP0a9U6pZ9ZNd2YdK9b1qzq1q0abqZrFz7a6S6bV2XvKpfbZ1a9W8fKpSlKAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="Awards banner — Commercial • Industrial • Residential — Top Agent Year 2024" width="1400" height="350" loading="eager" fetchpriority="high" class="object-cover w-full h-[58vh]">
       </picture>
       <!-- Slide 2 -->
       <picture class="slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3" aria-hidden="true">
@@ -80,7 +81,7 @@
     <div class="carousel-controls" aria-label="Carousel controls">
       <button type="button" id="prevSlide" aria-label="Previous slide">‹</button>
       <button type="button" id="nextSlide" aria-label="Next slide">›</button>
-      <button type="button" id="pausePlay" aria-pressed="false" aria-label="Pause autoplay" class="btn ghost" style="position:absolute;left:50%;transform:translateX(-50%);bottom:14px">Pause</button>
+      <button type="button" id="pausePlay" aria-pressed="false" aria-label="Pause autoplay" class="btn ghost absolute left-1/2 -translate-x-1/2 bottom-3.5">Pause</button>
     </div>
   </div>
 
@@ -90,7 +91,7 @@
       <div class="container">
         <h2>2024 Awards</h2>
         <picture>
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiMzMzMiPlRvcCBBZ2VudDwvdGV4dD48L3N2Zz4=" alt="Top Agent award banner" width="600" height="200" loading="lazy" style="width:100%;height:auto">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiMzMzMiPlRvcCBBZ2VudDwvdGV4dD48L3N2Zz4=" alt="Top Agent award banner" width="600" height="200" loading="lazy" class="w-full h-auto">
         </picture>
         <p>Recognized as the Top Agent across Commercial, Industrial, and Residential categories by Royal LePage Global Force Realty.</p>
         <script type="application/ld+json">
@@ -118,28 +119,28 @@
       <div class="container">
         <div class="section-title"><h2>Find the right next step</h2></div>
         <div class="card col-12 fade-up"><div class="card-body">
-          <form id="intentForm" class="small" aria-describedby="intentNext">
-            <p><strong>Which best describes you?</strong></p>
-            <label class="pill" style="cursor:pointer"><input type="radio" name="intent" value="owner" style="margin-right:8px">Owner‑User</label>
-            <label class="pill" style="cursor:pointer"><input type="radio" name="intent" value="investor" style="margin-right:8px">Investor</label>
-            <label class="pill" style="cursor:pointer"><input type="radio" name="intent" value="developer" style="margin-right:8px">Developer</label>
-          </form>
+            <form id="intentForm" class="small" aria-describedby="intentNext">
+              <p><strong>Which best describes you?</strong></p>
+              <label class="pill cursor-pointer"><input class="mr-2" type="radio" name="intent" value="owner">Owner‑User</label>
+              <label class="pill cursor-pointer"><input class="mr-2" type="radio" name="intent" value="investor">Investor</label>
+              <label class="pill cursor-pointer"><input class="mr-2" type="radio" name="intent" value="developer">Developer</label>
+            </form>
           <p id="intentNext" class="small">Select an option to see the next best step.</p>
 
-          <div id="intentCtas" style="display:none">
-            <div id="ctOwner" hidden style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" href="#listings">See owner‑user listings</a>
-              <a class="btn ghost" id="ownerTour" href="mailto:ishwinderghag@gmail.com?subject=Owner-User%20Tour%20Request">Book a tour</a>
+            <div id="intentCtas" class="hidden">
+              <div id="ctOwner" hidden class="flex flex-wrap gap-2.5">
+                <a class="btn" href="#listings">See owner‑user listings</a>
+                <a class="btn ghost" id="ownerTour" href="mailto:ishwinderghag@gmail.com?subject=Owner-User%20Tour%20Request">Book a tour</a>
+              </div>
+              <div id="ctInvestor" hidden class="flex flex-wrap gap-2.5">
+                <a class="btn" href="#get-comps">Request comps</a>
+                <a class="btn ghost" href="#tools">Open calculators</a>
+              </div>
+              <div id="ctDeveloper" hidden class="flex flex-wrap gap-2.5">
+                <button class="btn" id="openNDAFromQuiz" type="button">Open data room</button>
+                <a class="btn ghost" id="devReview" href="mailto:ishwinderghag@gmail.com?subject=Site%20Review%20Request">Book site review</a>
+              </div>
             </div>
-            <div id="ctInvestor" hidden style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" href="#get-comps">Request comps</a>
-              <a class="btn ghost" href="#tools">Open calculators</a>
-            </div>
-            <div id="ctDeveloper" hidden style="display:flex;gap:10px;flex-wrap:wrap">
-              <button class="btn" id="openNDAFromQuiz" type="button">Open data room</button>
-              <a class="btn ghost" id="devReview" href="mailto:ishwinderghag@gmail.com?subject=Site%20Review%20Request">Book site review</a>
-            </div>
-          </div>
         </div></div>
       </div>
     </section>
@@ -156,16 +157,16 @@
             <picture itemprop="image">
               <source type="image/avif" srcset="https://picsum.photos/id/1062/640/360.avif 640w, https://picsum.photos/id/1062/960/540.avif 960w, https://picsum.photos/id/1062/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
               <source type="image/jpeg" srcset="https://picsum.photos/id/1062/640/360 640w, https://picsum.photos/id/1062/960/540 960w, https://picsum.photos/id/1062/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
-              <img class="listing-photo" src="https://picsum.photos/id/1062/1280/720" alt="Port Kells light industrial lot" width="1280" height="720" loading="lazy" style="width:100%;height:auto;display:block">
+                <img class="listing-photo w-full h-auto block" src="https://picsum.photos/id/1062/1280/720" alt="Port Kells light industrial lot" width="1280" height="720" loading="lazy">
             </picture>
             <div class="card-body">
-              <h3 style="margin:0" itemprop="name">Surrey | 17895 96 Avenue (Port Kells)</h3>
+                <h3 class="m-0" itemprop="name">Surrey | 17895 96 Avenue (Port Kells)</h3>
               <div class="meta" itemprop="description">1.544 acres • Corner lot • Designated IL (Light Industrial)</div>
-              <div class="price" style="font-weight:800" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <div class="price font-extrabold" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 <span itemprop="priceCurrency" content="CAD">$</span><span itemprop="price" content="6650000">6,650,000</span>
               </div>
-              <details style="margin-top:8px">
-                <summary class="small" style="cursor:pointer">Highlights</summary>
+                <details class="mt-2">
+                  <summary class="small cursor-pointer">Highlights</summary>
                 <ul>
                   <li>2,454 sf 2‑storey home (4 bed / 3 bath) + ~1,100 sf shop (12' ceiling)</li>
                   <li>Dual frontages: 96 Ave & 179 St • Easy access to Hwy‑1, 17, 15, Golden Ears</li>
@@ -174,9 +175,9 @@
                 </ul>
                 <p class="small">Lot: 198' x 339' (1.54 ac) • Community: Port Kells • MLS®: R3015679 • Days on market: 55</p>
               </details>
-              <div style="margin-top:12px">
-                <iframe title="Map - 17895 96 Avenue, Surrey, BC V4N 4A9" loading="lazy" style="border:0;width:100%;height:260px;border-radius:12px" src="https://www.google.com/maps?q=17895%2096%20Avenue%2C%20Surrey%2C%20BC%20V4N%204A9&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
+                <div class="mt-3">
+                  <iframe title="Map - 17895 96 Avenue, Surrey, BC V4N 4A9" loading="lazy" class="border-0 w-full h-[260px] rounded-xl" src="https://www.google.com/maps?q=17895%2096%20Avenue%2C%20Surrey%2C%20BC%20V4N%204A9&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
           </article>
 
@@ -185,16 +186,16 @@
             <picture itemprop="image">
               <source type="image/avif" srcset="https://picsum.photos/id/1084/640/360.avif 640w, https://picsum.photos/id/1084/960/540.avif 960w, https://picsum.photos/id/1084/1280/720.avif 1280w" sizes="(min-width:900px) 50vw, 100vw">
               <source type="image/jpeg" srcset="https://picsum.photos/id/1084/640/360 640w, https://picsum.photos/id/1084/960/540 960w, https://picsum.photos/id/1084/1280/720 1280w" sizes="(min-width:900px) 50vw, 100vw">
-              <img class="listing-photo" src="https://picsum.photos/id/1084/1280/720" alt="Campbell Heights business park parcel" width="1280" height="720" loading="lazy" style="width:100%;height:auto;display:block">
+                <img class="listing-photo w-full h-auto block" src="https://picsum.photos/id/1084/1280/720" alt="Campbell Heights business park parcel" width="1280" height="720" loading="lazy">
             </picture>
             <div class="card-body">
-              <h3 style="margin:0" itemprop="name">Surrey | 3271 196 Street (Campbell Heights)</h3>
+                <h3 class="m-0" itemprop="name">Surrey | 3271 196 Street (Campbell Heights)</h3>
               <div class="meta" itemprop="description">43,553 sf (0.999 acre) • Campbell Heights Business Park • Light Industrial (IL)</div>
-              <div class="price" style="font-weight:800" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <div class="price font-extrabold" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 <span itemprop="priceCurrency" content="CAD">$</span><span itemprop="price" content="3750000">3,750,000</span>
               </div>
-              <details style="margin-top:8px">
-                <summary class="small" style="cursor:pointer">Highlights</summary>
+                <details class="mt-2">
+                  <summary class="small cursor-pointer">Highlights</summary>
                 <ul>
                   <li>Adjacent parcels received 3rd reading for rezoning</li>
                   <li>Services to lot line with adjacent development</li>
@@ -203,9 +204,9 @@
                 </ul>
                 <p class="small">Lot: 94' x 461' (43,553 sf) • Community: Serpentine • MLS®: R3029310 • Days on market: 22</p>
               </details>
-              <div style="margin-top:12px">
-                <iframe title="Map - 3271 196 Street, Surrey, BC V3S 0L5" loading="lazy" style="border:0;width:100%;height:260px;border-radius:12px" src="https://www.google.com/maps?q=3271%20196%20Street%2C%20Surrey%2C%20BC%20V3S%200L5&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
+                <div class="mt-3">
+                  <iframe title="Map - 3271 196 Street, Surrey, BC V3S 0L5" loading="lazy" class="border-0 w-full h-[260px] rounded-xl" src="https://www.google.com/maps?q=3271%20196%20Street%2C%20Surrey%2C%20BC%20V3S%200L5&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
           </article>
 
@@ -257,7 +258,7 @@
         <div class="grid">
           <div class="col-4 card fade-up"><div class="card-body">
             <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8QEA8QDw8QEA8PDw8QDw8PFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyU3LS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOwA2wMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EADcQAAEDAwIDBQgCAwAAAAAAAAECAwQAESEFBhIxQVEHImFxgTJCsSNCUqGx0SNSYtH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAUBAwYC/8QALxEBAAICAQIDBgcAAAAAAAAAAAECAxEEIRIxQVEiMmFxgZHB0RMzQVJCUoL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBz3b0tM3aW6oU5eO2c6w1kzWZx2M8G7e1b0p6kTtC6e4s6oWqg1m0bQqzvTjS8h8aV2zWQzWm7b1fUeU2z9w0h1b3d9cS3YV0U9O5H2xQ0c1l5x1t8Hk1S6tN+0r9lq1t1mO5w5bM1J6b1pX1tWm7S3t8k2y7b2yQmK5m5pK5JYqkclhQhYJYAAAB4r7vTfq8fU0n5vG3z7M2o9S1bq6c6V9jV6hZbqjYdG1bZs1y1Zp9bU0bYj8l1bVdmVvMiyqW2Vb7xU8uQkqEoAAAHm5Wb2+9/Q2p+0mX9r7rR3t4u1a2n2q1i3q9J6V6m8fK3l5v5b1r5q6b9Gm2d2Z5m2p1m2m3OciqWQUpCwAAAAAA8b2e9f1b+N6b7mF3aV9dW2bKq1d3pV5m6r0bXlpkcZ1W6dHc4rK7bH1Yz0s5JOVJSlKQAAAAAAAcV6dWc3vF2qf1dXbls2Y0G6q7aX1w2lS2OZbq2Xc8bq6l3o5eZb2o4RzKp5SlKUpSgAAAAAAAHjU7v9fV6r6sXbZ2o2b1c1p2r2b1p1m2t3eY5lZ5qU5SlKUoAAAAAAAAB5O9r1+o7Tqg3m3r2r1lZp2r2b1p1m2t3ea5lZ5qU5SlKUoAAAAAAAAAeP7f0r6q6r8uS3bX2i3b2m2r2b1q1m2t3eY5lZ5qU5SlKUoAAAAAAAAAAc+9f0f0o6b7R9b7a7a2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAABxvVf0j6a7T9a7a7b2m2r2b1q1m2t3ea5lZ5qU5SlKUoAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Portrait of real estate agent Ishwinder Ghag" class="avatar" loading="lazy"/>
-            <p class="small" style="margin-top:8px">UBC Development Land Sale &amp; Land Assembly Specialist. Works with investors, owner‑users, and first‑time buyers. Focus: Lower Mainland (Surrey, Langley, Vancouver, Burnaby, Delta &amp; beyond).</p>
+              <p class="small mt-2">UBC Development Land Sale &amp; Land Assembly Specialist. Works with investors, owner‑users, and first‑time buyers. Focus: Lower Mainland (Surrey, Langley, Vancouver, Burnaby, Delta &amp; beyond).</p>
           </div></div>
           <div class="col-8 card fade-up"><div class="card-body">
             <h3>Profile</h3>
@@ -275,23 +276,23 @@
             <h3>Send a message</h3>
             <form id="contactForm" method="POST" action="mailto:ishwinderghag@gmail.com" enctype="text/plain">
               <input type="hidden" name="intent" id="intentHidden" value="">
-              <p>
-                <label class="visually-hidden" for="name">Your name</label>
-                <input id="name" name="name" placeholder="Your name" required autocomplete="name" style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--line)">
-              </p>
-              <p>
-                <label class="visually-hidden" for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="Email" required autocomplete="email" style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--line)">
-              </p>
-              <p>
-                <label class="visually-hidden" for="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Tell me about your requirement" style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--line)"></textarea>
-              </p>
+                <p>
+                  <label class="visually-hidden" for="name">Your name</label>
+                  <input id="name" name="name" placeholder="Your name" required autocomplete="name" class="w-full p-3.5 rounded-xl border border-[var(--line)]">
+                </p>
+                <p>
+                  <label class="visually-hidden" for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="Email" required autocomplete="email" class="w-full p-3.5 rounded-xl border border-[var(--line)]">
+                </p>
+                <p>
+                  <label class="visually-hidden" for="message">Message</label>
+                  <textarea id="message" name="message" rows="5" placeholder="Tell me about your requirement" class="w-full p-3.5 rounded-xl border border-[var(--line)]"></textarea>
+                </p>
               <button class="btn" type="submit">Send</button>
               <p id="contactResult" class="small" role="status" aria-live="polite"></p>
             </form>
             <noscript><p class="small"><a href="mailto:ishwinderghag@gmail.com">Send email</a> (JavaScript disabled)</p></noscript>
-            <p class="small" style="margin-top:8px">Your message will be processed securely. If the form fails, use the email link above.</p>
+              <p class="small mt-2">Your message will be processed securely. If the form fails, use the email link above.</p>
           </div></div>
           <div class="col-4 card fade-up"><div class="card-body">
             <h3>Contact</h3>
@@ -301,7 +302,7 @@
             <strong>Brokerage:</strong> Royal LePage Global Force Realty</p>
           </div></div>
         </div>
-        <div class="small" style="margin-top:16px">*Disclosure: Brokerage services provided through Royal LePage Global Force Realty.</div>
+          <div class="small mt-4">*Disclosure: Brokerage services provided through Royal LePage Global Force Realty.</div>
       </div>
     </section>
 
@@ -359,12 +360,12 @@
             <div class="grid">
               <p class="col-6"><label for="laCount"># of Lots / Owners</label><input id="laCount" type="number" min="1" value="3"></p>
               <p class="col-6"><label>Split Method</label>
-                <span class="small" style="display:flex;gap:10px"><label><input type="radio" name="laMethod" value="equal" checked> Equal</label>
+                <span class="small flex gap-2.5"><label><input type="radio" name="laMethod" value="equal" checked> Equal</label>
                 <label><input type="radio" name="laMethod" value="share"> By share</label></span>
               </p>
             </div>
-            <div id="laShares" class="small" style="margin-top:8px"></div>
-            <div id="laTable" class="small" style="margin-top:8px"></div>
+            <div id="laShares" class="small mt-2"></div>
+            <div id="laTable" class="small mt-2"></div>
             <button class="btn ghost" id="laCopy" type="button">Copy summary</button>
           </div></div>
 
@@ -420,12 +421,12 @@
                 <p class="col-6"><label for="cemail">Email</label><input id="cemail" name="email" type="email" required></p>
               </div>
               <button class="btn" type="submit">Request Brief</button>
-              <p class="small" style="margin-top:8px">You’ll get a curated comp set and quick market read for your site.</p>
+                <p class="small mt-2">You’ll get a curated comp set and quick market read for your site.</p>
             </form>
           </div></div>
           <div class="card col-4 fade-up"><div class="card-body">
             <h3>Policy Watch</h3>
-            <ul id="policyList" class="small" style="padding-left:18px"></ul>
+              <ul id="policyList" class="small pl-[18px]"></ul>
             <p class="small">Live municipal + market notes you can keep updated.</p>
           </div></div>
         </div>
@@ -446,7 +447,7 @@
   </main>
 
   <footer>
-    <div class="container small" style="margin-top:18px;border-top:1px solid var(--line);padding-top:12px">
+    <div class="container small mt-[18px] border-t border-[var(--line)] pt-3">
       <div class="foot-row">
         <div>© <span id="year"></span> Ishwinder Ghag. All rights reserved.</div>
         <div class="links">
@@ -459,13 +460,13 @@
   </footer>
 
   <!-- Tiny Privacy / Terms modals -->
-  <dialog id="policyModal" style="max-width:720px;border:none;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:0">
-    <form method="dialog" style="margin:0">
-      <header style="display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line);background:var(--card)">
-        <h2 id="policyTitle" style="margin:0">Policy</h2>
-        <button class="btn ghost" value="close" aria-label="Close">Close</button>
-      </header>
-      <div style="padding:16px;background:var(--paper);color:var(--ink)">
+    <dialog id="policyModal" class="max-w-[720px] border-0 rounded-[18px] shadow-[0_30px_60px_rgba(0,0,0,0.35)] p-0">
+      <form method="dialog" class="m-0">
+        <header class="flex justify-between items-center p-4 border-b border-[var(--line)] bg-[var(--card)]">
+          <h2 id="policyTitle" class="m-0">Policy</h2>
+          <button class="btn ghost" value="close" aria-label="Close">Close</button>
+        </header>
+        <div class="p-4 bg-[var(--paper)] text-[var(--ink)]">
         <div id="privacyContent" hidden>
           <p class="small"><strong>Privacy.</strong> We collect form submissions (name, email, and message) solely to respond to your inquiry. Data is stored in Netlify Forms and forwarded to our email. We do not sell personal information or use tracking cookies.</p>
           <p class="small">To request deletion of your submission, email <a href="mailto:ishwinderghag@gmail.com">ishwinderghag@gmail.com</a>.</p>
@@ -473,22 +474,22 @@
         <div id="termsContent" hidden>
           <p class="small"><strong>Terms.</strong> All information on this site is provided for general information only and is subject to change without notice. Listings are subject to errors, omissions, and prior sale or withdrawal.</p>
         </div>
-      </div>
-    </form>
-  </dialog>
+        </div>
+      </form>
+    </dialog>
 
     <!-- NDA modal -->
-  <dialog id="ndaModal" style="max-width:720px;border:none;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:0">
-    <form method="dialog" style="margin:0">
-      <header style="display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line);background:var(--card)">
-        <h2 style="margin:0">Non‑Disclosure Acknowledgement</h2>
+  <dialog id="ndaModal" class="max-w-[720px] border-0 rounded-[18px] shadow-[0_30px_60px_rgba(0,0,0,0.35)] p-0">
+    <form method="dialog" class="m-0">
+      <header class="flex justify-between items-center p-4 border-b border-[var(--line)] bg-[var(--card)]">
+        <h2 class="m-0">Non‑Disclosure Acknowledgement</h2>
         <button class="btn ghost" value="close" aria-label="Close">Close</button>
       </header>
-      <div style="padding:16px;background:var(--paper);color:var(--ink)">
+      <div class="p-4 bg-[var(--paper)] text-[var(--ink)]">
         <p class="small">By accessing the data room, you agree not to distribute documents or confidential information. Enter the access code provided by the broker.</p>
         <label for="ndaCode">Access Code</label>
         <input id="ndaCode" type="password" placeholder="Enter code">
-        <div id="dataLinks" class="small" style="margin-top:10px;display:none">
+        <div id="dataLinks" class="small mt-2.5 hidden">
           <p><strong>Files:</strong></p>
           <ul>
             <li><a target="_blank" rel="noopener" href="#">Offering Memorandum (PDF)</a></li>
@@ -496,8 +497,8 @@
             <li><a target="_blank" rel="noopener" href="#">Survey & Title</a></li>
           </ul>
         </div>
-        <div id="ndaError" class="small" style="color:#b91c1c;display:none">Incorrect code.</div>
-        <div style="margin-top:12px;display:flex;gap:10px">
+        <div id="ndaError" class="small text-[#b91c1c] hidden">Incorrect code.</div>
+        <div class="mt-3 flex gap-2.5">
           <button class="btn" id="unlockNDA" value="default">Unlock</button>
           <button class="btn ghost" value="close">Cancel</button>
         </div>
@@ -512,7 +513,7 @@
   </div>
 
   <noscript>
-    <div class="container small" style="padding:12px 0">JavaScript is disabled. You can still browse listings and contact me via the details above.</div>
+    <div class="container small py-3">JavaScript is disabled. You can still browse listings and contact me via the details above.</div>
   </noscript>
 
   <!-- Structured Data -->
@@ -567,457 +568,6 @@
     ]
   }
   </script>
-
-    <script defer>
-      const safeStorage = (()=>{
-        let warned = false;
-        function warn(e){
-          if(!warned){
-            warned = true;
-            console.warn('Storage access failed', e);
-            alert('Storage features are disabled in your browser.');
-          }
-        }
-        return {
-          get(key){
-            try{ return localStorage.getItem(key); }
-            catch(e){ warn(e); return null; }
-          },
-          set(key, value){
-            try{ localStorage.setItem(key, value); }
-            catch(e){ warn(e); }
-          },
-          remove(key){
-            try{ localStorage.removeItem(key); }
-            catch(e){ warn(e); }
-          }
-        };
-      })();
-
-      const safeClipboard = {
-        async write(text){
-          try{
-            if(!navigator.clipboard) throw new Error('Clipboard API unavailable');
-            await navigator.clipboard.writeText(text);
-          }catch(e){
-            console.warn('Clipboard write failed', e);
-            alert('Clipboard unavailable');
-            throw e;
-          }
-        }
-      };
-
-      // Respect stored theme preference
-      (function(){
-        const stored = safeStorage.get('theme');
-        if(stored === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
-      })();
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Theme toggle
-    const themeBtn = document.getElementById('themeToggle');
-    if(themeBtn){
-      themeBtn.addEventListener('click',()=>{
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        if(isDark){ document.documentElement.removeAttribute('data-theme'); safeStorage.remove('theme'); themeBtn.setAttribute('aria-pressed','false'); }
-        else { document.documentElement.setAttribute('data-theme','dark'); safeStorage.set('theme','dark'); themeBtn.setAttribute('aria-pressed','true'); }
-      });
-    }
-
-    // Simple carousel with controls + keyboard + pause + a11y states
-    (function(){
-      const root = document.getElementById('carousel');
-      const slides = root.querySelector('.slides');
-      const frames = Array.from(slides.children);
-      const total = frames.length;
-      let i = 0;
-      let playing = true;
-      let timer = null;
-
-      function setA11y(idx){
-        frames.forEach((el, j)=>{
-          el.setAttribute('aria-hidden', j===idx ? 'false' : 'true');
-          el.setAttribute('aria-label', `Slide ${j+1} of ${total}`);
-        });
-      }
-      function go(n){
-        i = (n + total) % total;
-        slides.style.transform = 'translateX(' + (-i*100) + '%)';
-        setA11y(i);
-      }
-      function play(){ playing = true; timer = setInterval(()=>go(i+1), 3500); }
-      function pause(){ playing = false; clearInterval(timer); timer = null; }
-
-      // Autoplay (respect reduced motion)
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){ play(); }
-      setA11y(0);
-
-      // Controls
-      root.querySelector('#prevSlide').addEventListener('click',()=>{ pause(); go(i-1); });
-      root.querySelector('#nextSlide').addEventListener('click',()=>{ pause(); go(i+1); });
-      const pp = root.querySelector('#pausePlay');
-      pp.addEventListener('click',()=>{
-        if (playing){ pause(); pp.setAttribute('aria-pressed','true'); pp.textContent='Play'; pp.setAttribute('aria-label','Play autoplay'); }
-        else { play(); pp.setAttribute('aria-pressed','false'); pp.textContent='Pause'; pp.setAttribute('aria-label','Pause autoplay'); }
-      });
-
-      // Keyboard support
-      root.addEventListener('keydown', (e)=>{
-        if(e.key==='ArrowRight'){ pause(); go(i+1); }
-        if(e.key==='ArrowLeft'){ pause(); go(i-1); }
-      });
-    })();
-
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      for(const e of entries){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }
-    }, {threshold: .12});
-    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
-
-    // Scrollspy for nav highlights
-    (function(){
-      const links = Array.from(document.querySelectorAll('nav a[href^="#"]'));
-      const map = new Map(links.map(a=>[a.getAttribute('href'), a]));
-      const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          const id = '#' + entry.target.id;
-          const link = map.get(id);
-          if(link){ link.setAttribute('aria-current', entry.isIntersecting ? 'true' : 'false'); }
-        });
-      }, {rootMargin: '-50% 0px -45% 0px', threshold: [0,1]});
-      document.querySelectorAll('main section[id]').forEach(sec=>obs.observe(sec));
-    })();
-
-    function trapFocus(modal){
-      const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])');
-      const first = focusable[0];
-      const last = focusable[focusable.length-1];
-      const prev = document.activeElement;
-      function loop(e){
-        if(e.key==='Tab'){
-          if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
-          else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
-        }
-      }
-      modal.addEventListener('keydown', loop);
-      modal.addEventListener('close',()=>{ modal.removeEventListener('keydown', loop); prev&&prev.focus(); });
-      first&&first.focus();
-    }
-
-    // Privacy / Terms tiny modal handler
-    (function(){
-      const modal = document.getElementById('policyModal');
-      const privacy = document.getElementById('openPrivacy');
-      const terms = document.getElementById('openTerms');
-      const title = document.getElementById('policyTitle');
-      const pContent = document.getElementById('privacyContent');
-      const tContent = document.getElementById('termsContent');
-      function open(type){
-        const isPrivacy = type==='privacy';
-        title.textContent = isPrivacy ? 'Privacy' : 'Terms';
-        pContent.hidden = !isPrivacy; tContent.hidden = isPrivacy;
-        modal.showModal();
-        trapFocus(modal);
-      }
-      privacy.addEventListener('click',(e)=>{ e.preventDefault(); open('privacy'); });
-      terms.addEventListener('click',(e)=>{ e.preventDefault(); open('terms'); });
-    })();
-      // Calculators, widgets & quiz
-    (function(){
-      function sanitize(str){
-        const div=document.createElement('div');
-        div.textContent=str==null?'':String(str);
-        return div.textContent;
-      }
-      function sanitizeNumberString(str){
-        return (str||'').replace(/[^\d.-]/g,'');
-      }
-      function parseNum(val){
-        return parseFloat(sanitizeNumberString(val))||0;
-      }
-      function attachNumericSanitizer(el){
-        if(!el) return;
-        el.addEventListener('input',()=>{
-          const clean=sanitizeNumberString(el.value);
-          if(el.value!==clean) el.value=clean;
-        });
-      }
-      function clear(el){ while(el && el.firstChild) el.removeChild(el.firstChild); }
-
-      // Cap rate
-      const noi = document.getElementById('noi');
-      const price = document.getElementById('capPrice');
-      const capOut = document.getElementById('capResult');
-      function cap(){
-        const n = parseFloat(noi.value||'');
-        const p = parseFloat(price.value||'');
-        if(n>0 && p>0){ capOut.textContent = `Cap Rate: ${(n/p*100).toFixed(2)}%`; }
-        else capOut.textContent = 'Cap Rate: —';
-      }
-      [noi,price].forEach(el=>el&&el.addEventListener('input',cap));
-
-      // Mortgage (simple fixed payment)
-      const mPrice = document.getElementById('mPrice');
-      const down = document.getElementById('down');
-      const rate = document.getElementById('rate');
-      const amort = document.getElementById('amort');
-      const mOut = document.getElementById('mortResult');
-      function mort(){
-        const P = Math.max(0,(parseFloat(mPrice.value||'')||0) * (1 - (parseFloat(down.value||'0')/100)));
-        const r = (parseFloat(rate.value||'0')/100)/12;
-        const n = (parseInt(amort.value||'25',10))*12;
-        if(P>0 && r>0 && n>0){
-          const M = P * (r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
-          mOut.textContent = `Monthly Payment: $${M.toLocaleString(undefined,{maximumFractionDigits:0})}`;
-        }else{
-          mOut.textContent = 'Monthly Payment: —';
-        }
-      }
-      ;[mPrice,down,rate,amort].forEach(el=>el&&el.addEventListener('input',mort));
-
-      // Call for Offers countdown
-      const cfo = document.getElementById('cfo');
-      const cfoOut = document.getElementById('cfoCountdown');
-      const shareBtn = document.getElementById('shareCFO');
-      if(shareBtn && !navigator.clipboard){ shareBtn.style.display='none'; }
-      let cfoTimer=null;
-      function tick(){
-        if(!cfo.value){ cfoOut.textContent='Set a deadline to start the live countdown.'; return; }
-        const t = new Date(cfo.value).getTime();
-        const now = Date.now();
-        const diff = t-now;
-        if(diff<=0){ cfoOut.textContent = 'Offer window closed.'; clearInterval(cfoTimer); return; }
-        const d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000), m=Math.floor(diff%3600000/60000), s=Math.floor(diff%60000/1000);
-        cfoOut.textContent = `${d}d ${h}h ${m}m ${s}s remaining`;
-      }
-      cfo&&cfo.addEventListener('input',()=>{clearInterval(cfoTimer); tick(); cfoTimer=setInterval(tick,1000)});
-      shareBtn&&shareBtn.addEventListener('click',()=>{
-        const text = cfo.value ? `Call for Offers closes ${new Date(cfo.value).toLocaleString()}` : 'Call for Offers date coming soon.';
-        safeClipboard.write(text).then(()=>{ shareBtn.textContent='Copied!'; setTimeout(()=>shareBtn.textContent='Copy share text',1200); }).catch(()=>{});
-      });
-
-      // Policy Watch (editable items)
-      const policyItems = [
-        {title:'Brookswood‑Booth NCP: Phase 2 staff report', note:'Target Q4 review; servicing strategy update forthcoming.'},
-        {title:'Campbell Heights expansion', note:'Adjacent parcels at 3rd reading; utilities to lot line.'},
-        {title:'Bank of Canada rate', note:'Monitoring for cap rate/yield shifts; update quarterly.'}
-      ];
-      const list = document.getElementById('policyList');
-      if(list){
-        policyItems.forEach(i=>{ const li=document.createElement('li'); li.innerHTML=`<strong>${i.title}</strong> — ${i.note}`; list.appendChild(li); });
-      }
-
-      // NDA gating (demo code — replace with real VDR)
-      const ndaBtn = document.getElementById('openNDA');
-      const ndaModal = document.getElementById('ndaModal');
-      const unlock = document.getElementById('unlockNDA');
-      ndaBtn&&ndaBtn.addEventListener('click',()=>{ ndaModal.showModal(); trapFocus(ndaModal); });
-      unlock&&unlock.addEventListener('click',(e)=>{
-        e.preventDefault();
-        const code = (document.getElementById('ndaCode')||{}).value || '';
-        const ok = code.trim() === 'DEMO2024';
-        document.getElementById('ndaError').style.display = ok ? 'none':'block';
-        const links = document.getElementById('dataLinks');
-        if(ok){ links.style.display='block'; }
-      });
-
-      // ===== Auto‑qualify quiz =====
-      const form = document.getElementById('intentForm');
-      const ctas = document.getElementById('intentCtas');
-      const note = document.getElementById('intentNext');
-      const ctOwner = document.getElementById('ctOwner');
-      const ctInvestor = document.getElementById('ctInvestor');
-      const ctDeveloper = document.getElementById('ctDeveloper');
-      const intentHidden = document.getElementById('intentHidden');
-      const gcIntent = document.getElementById('gcIntent');
-      const ownerTour = document.getElementById('ownerTour');
-      const ndaFromQuiz = document.getElementById('openNDAFromQuiz');
-      function showIntent(v){
-        if(!v) return;
-        safeStorage.set('intent', v);
-        if(intentHidden) intentHidden.value = v;
-        if(gcIntent) gcIntent.value = v;
-        ctas.style.display = 'block';
-        ctOwner.hidden = v!=='owner';
-        ctInvestor.hidden = v!=='investor';
-        ctDeveloper.hidden = v!=='developer';
-        note.textContent = v==='owner' ? 'Great — let’s book a tour or browse owner‑user listings.' : v==='investor' ? 'Perfect — request comps or run quick returns.' : 'Let’s line up a site review or open the data room.';
-        if(ownerTour){ ownerTour.href = 'mailto:ishwinderghag@gmail.com?subject=' + encodeURIComponent(`${v==='owner'?'Owner‑User':'General'} Tour Request`) + '&body=' + encodeURIComponent('Hi Ishwinder,
-
-I am an ' + v + ' interested in touring...'); }
-      }
-      if(form){
-        form.addEventListener('change', (e)=>{ if(e.target && e.target.name==='intent'){ showIntent(e.target.value); } });
-        // preload saved
-        const saved = safeStorage.get('intent');
-        if(saved){ const el=form.querySelector(`input[value="${saved}"]`); if(el){ el.checked=true; showIntent(saved);} }
-      }
-      ndaFromQuiz&&ndaFromQuiz.addEventListener('click',()=>{ const m=document.getElementById('ndaModal'); if(m){ m.showModal(); trapFocus(m); } });
-
-      // ===== Land‑Assembly Split Tool =====
-      const laTotal = document.getElementById('laTotal');
-      const laCount = document.getElementById('laCount');
-      const laShares = document.getElementById('laShares');
-      const laTable = document.getElementById('laTable');
-      const laCopy = document.getElementById('laCopy');
-      if(laCopy && !navigator.clipboard){ laCopy.style.display='none'; }
-      function renderShareInputs(n){
-        const method = (document.querySelector('input[name="laMethod"]:checked')||{}).value || 'equal';
-        clear(laShares);
-        if(method==='share'){
-          const wrap = document.createElement('div');
-          wrap.className='grid';
-          for(let i=1;i<=n;i++){
-            const p=document.createElement('p');
-            p.className='col-4';
-            const label=document.createElement('label');
-            label.textContent=sanitize(`Share #${i}`);
-            const input=document.createElement('input');
-            input.type='number';
-            input.step='0.01';
-            input.value='1';
-            input.id='laS'+i;
-            attachNumericSanitizer(input);
-            p.appendChild(label);
-            p.appendChild(input);
-            wrap.appendChild(p);
-          }
-          laShares.appendChild(wrap);
-          const hint=document.createElement('p');
-          hint.className='small';
-          hint.textContent='Enter frontage/area weights (any units). Amounts are proportional to these shares.';
-          laShares.appendChild(hint);
-        }
-      }
-      function currency(x){ return '$' + (x||0).toLocaleString(undefined,{maximumFractionDigits:0}); }
-      function laCalc(){
-        const total = parseNum(laTotal.value);
-        const n = Math.max(1, parseInt(parseNum(laCount.value)||1,10));
-        const method = (document.querySelector('input[name="laMethod"]:checked')||{}).value || 'equal';
-        let shares = new Array(n).fill(1);
-        if(method==='share'){
-          shares = shares.map((_,i)=>parseNum((document.getElementById('laS'+(i+1))||{}).value));
-          const sum = shares.reduce((a,b)=>a+b,0)||1; shares = shares.map(s=>s/sum);
-        }else{ shares = shares.map(()=>1/n); }
-        clear(laTable);
-        const table=document.createElement('table');
-        table.style.width='100%';
-        table.style.borderCollapse='collapse';
-        const thead=document.createElement('thead');
-        const headRow=document.createElement('tr');
-        ['Owner','Share','Amount'].forEach((h,idx)=>{
-          const th=document.createElement('th');
-          th.style.textAlign=idx===2?'right':'left';
-          th.textContent=sanitize(h);
-          headRow.appendChild(th);
-        });
-        thead.appendChild(headRow);
-        table.appendChild(thead);
-        const tbody=document.createElement('tbody');
-        shares.forEach((s,i)=>{
-          const amt = total*s;
-          const tr=document.createElement('tr');
-          const tdOwner=document.createElement('td');
-          tdOwner.textContent=sanitize(`Owner ${i+1}`);
-          const tdShare=document.createElement('td');
-          tdShare.textContent=sanitize(`${(s*100).toFixed(2)}%`);
-          const tdAmount=document.createElement('td');
-          tdAmount.style.textAlign='right';
-          tdAmount.textContent=sanitize(currency(amt));
-          tr.appendChild(tdOwner);
-          tr.appendChild(tdShare);
-          tr.appendChild(tdAmount);
-          tbody.appendChild(tr);
-        });
-        table.appendChild(tbody);
-        laTable.appendChild(table);
-      }
-      attachNumericSanitizer(laTotal);
-      attachNumericSanitizer(laCount);
-      if(laCount){ laCount.addEventListener('input',()=>{ renderShareInputs(Math.max(1,parseInt(parseNum(laCount.value)||1,10))); laCalc(); }); }
-      document.querySelectorAll('input[name="laMethod"]').forEach(r=>r.addEventListener('change',()=>{ renderShareInputs(Math.max(1,parseInt(parseNum(laCount.value)||1,10))); laCalc(); }));
-      laTotal&&laTotal.addEventListener('input',laCalc);
-      laShares.addEventListener('input', (e)=>{ if(e.target && e.target.tagName==='INPUT') laCalc(); });
-      laCopy&&laCopy.addEventListener('click',()=>{
-        const txt = laTable.textContent||'';
-        safeClipboard.write(txt).then(()=>{ laCopy.textContent='Copied!'; setTimeout(()=>laCopy.textContent='Copy summary',1200); }).catch(()=>{});
-      });
-      // init
-      if(laCount){ renderShareInputs(parseInt(laCount.value,10)); laCalc(); }
-
-      // ===== Strata vs Lease =====
-      const svlSize=document.getElementById('svlSize');
-      const svlPrice=document.getElementById('svlPrice');
-      const svlDown=document.getElementById('svlDown');
-      const svlRate=document.getElementById('svlRate');
-      const svlAmort=document.getElementById('svlAmort');
-      const svlStrata=document.getElementById('svlStrata');
-      const svlTax=document.getElementById('svlTax');
-      const svlNet=document.getElementById('svlNet');
-      const svlOp=document.getElementById('svlOp');
-      const svlOut=document.getElementById('svlOut');
-      [svlSize,svlPrice,svlDown,svlRate,svlAmort,svlStrata,svlTax,svlNet,svlOp].forEach(attachNumericSanitizer);
-      function payment(P,r,years){ const i=r/12; const n=years*12; return (i>0)? P * (i*Math.pow(1+i,n))/(Math.pow(1+i,n)-1):(P/n); }
-      function svl(){
-        const size=parseNum(svlSize.value);
-        const price=parseNum(svlPrice.value);
-        const down=parseNum(svlDown.value);
-        const rate=parseNum(svlRate.value)/100;
-        const years=parseNum(svlAmort.value)||25;
-        const strata=parseNum(svlStrata.value);
-        const taxA=parseNum(svlTax.value);
-        const net=parseNum(svlNet.value);
-        const op=parseNum(svlOp.value);
-        const loan = price * (1 - down/100);
-        const monthlyBuy = payment(loan, rate, years) + strata + (taxA/12);
-        const monthlyLease = (size * (net+op)) / 12;
-        const diff = monthlyBuy - monthlyLease;
-        svlOut.textContent = sanitize(`Own: ${currency(monthlyBuy)} /mo • Lease: ${currency(monthlyLease)} /mo • Diff: ${diff>=0?'+':''}${currency(diff)} per month`);
-      }
-      [svlSize,svlPrice,svlDown,svlRate,svlAmort,svlStrata,svlTax,svlNet,svlOp].forEach(el=>el&&el.addEventListener('input',svl));
-      svl();
-
-      // ===== Yield on Cost =====
-      const yNoi=document.getElementById('yocNoi');
-      const yCost=document.getElementById('yocCost');
-      const yTarget=document.getElementById('yocTarget');
-      const yOut=document.getElementById('yocOut');
-      function yoc(){
-        const noi=+yNoi.value||0; const cost=+yCost.value||0; const tgt=(+yTarget.value||0)/100; if(noi>0 && cost>0){ const y=noi/cost; const bp=((y - tgt)*10000); yOut.textContent = `YoC: ${(y*100).toFixed(2)}% (${bp>=0?'+':''}${bp.toFixed(0)} bps vs target)`; } else { yOut.textContent='YoC: —'; }
-      }
-      [yNoi,yCost,yTarget].forEach(el=>el&&el.addEventListener('input',yoc));
-      yoc();
-    })();
-
-    // Contact form submission
-    (()=>{
-      const form = document.getElementById('contactForm');
-      const result = document.getElementById('contactResult');
-      if(!form) return;
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(form));
-        result.textContent = 'Sending…';
-        try {
-          const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          const json = await res.json();
-          if(json.success){
-            result.textContent = 'Message sent successfully.';
-            form.reset();
-          }else{
-            throw new Error(json.error||'Error');
-          }
-        } catch(err){
-          result.innerHTML = 'Unable to send — <a href="mailto:ishwinderghag@gmail.com">email me instead</a>.';
-        }
-      });
-    })();
-  </script>
+    <script defer src="scripts/main.js"></script>
 </body>
 </html>
