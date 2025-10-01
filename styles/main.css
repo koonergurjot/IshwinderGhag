@@ -94,7 +94,20 @@ header{
 }
 .nav{ display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
 .brand{ display: flex; align-items: center; gap: .75rem; }
-.avatar{ width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-sm); }
+.avatar{
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
+.brand .avatar{
+  width: 40px;
+  height: 40px;
+}
+#about .avatar{
+  width: clamp(160px, 35vw, 200px);
+  height: clamp(160px, 35vw, 200px);
+}
 nav ul{ list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; }
 nav a{ color: var(--ink-2); font-weight: 600; padding: .5rem .65rem; border-radius: var(--r-xs); }
 nav a[aria-current="true"]{ color: var(--primary); background: color-mix(in oklab, var(--primary) 10%, transparent); }
