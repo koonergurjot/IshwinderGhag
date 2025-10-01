@@ -1,0 +1,21 @@
+{
+  "id": "789",
+  "title": "789 Industrial Way",
+  "type": "Industrial",
+  "city": "Abbotsford",
+  "price": 3490000,
+  "priceDisplay": "$3,490,000",
+  "address": "789 Industrial Way, Abbotsford, BC",
+  "coords": [
+    49.0504,
+    -122.3045
+  ],
+  "cover": "/assets/ishwinder/hero-960.jpg",
+  "webp": "/assets/ishwinder/hero-960.jpg",
+  "gallery": [
+    "/assets/ishwinder/hero-960.jpg"
+  ],
+  "details": "Warehouse • 12,000 sqft • Clear height 26'",
+  "badge": "Hot",
+  "generatedAt": "2025-10-01T22:04:41.299Z"
+}

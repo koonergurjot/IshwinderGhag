@@ -6,6 +6,8 @@
 
   function currency(n){ return n.toLocaleString(undefined,{style:'currency',currency:'CAD',maximumFractionDigits:0}); }
 
+  let updateListenerBound = false;
+
   function renderUI(mountSelector){
     const mount = $(mountSelector);
     if(!mount) return;
@@ -49,6 +51,7 @@
 
       <section class="container" style="display:grid; grid-template-columns: 1.1fr .9fr; gap: 1rem;">
         <div>
+          <div class="small" id="detail-links" aria-live="polite">Loading listings…</div>
           <div class="grid" id="cards"></div>
         </div>
         <div>
@@ -58,6 +61,10 @@
     `;
     bind();
     render();
+    if(!updateListenerBound){
+      window.addEventListener('listings:updated', render);
+      updateListenerBound = true;
+    }
   }
 
   let state = {type:'',city:'',price:'',q:''}, map, markers=[];
@@ -109,6 +116,17 @@
     const grid = $('#cards');
     grid.innerHTML = list.map(cardTpl).join('') || '<p class="small">No matches. Try clearing filters.</p>';
 
+    const detailLinks = $('#detail-links');
+    const allListings = window.LISTINGS || [];
+    if(detailLinks){
+      if(allListings.length){
+        const links = allListings.map(item=>`<a href="/listings/${encodeURIComponent(item.id)}/">${item.title}</a>`).join(' • ');
+        detailLinks.innerHTML = `Listing detail pages: ${links}`;
+      } else {
+        detailLinks.textContent = 'Listing details coming soon. Check back shortly.';
+      }
+    }
+
     // lightbox hydration and shortlist state
     window.initLightbox?.();
     window.initShortlist?.();
@@ -133,9 +151,10 @@
   function cardTpl(it){
     const img = it.cover;
     const webp = it.webp && it.webp.endsWith('.webp') ? it.webp : null;
+    const detailUrl = `/listings/${encodeURIComponent(it.id)}/`;
     return `
     <article class="card col-12" data-id="${it.id}">
-      <a href="${img}" data-gallery class="block">
+      <a href="${detailUrl}" class="block" aria-label="View ${it.title} details">
         <picture>
           ${webp ? `<source type="image/webp" srcset="${webp}">` : ''}
           <img class="listing-photo" src="${img}" alt="${it.title}">
@@ -147,7 +166,8 @@
         <div class="price js-price" data-price="${it.priceDisplay||currency(it.price)}">${it.priceDisplay||currency(it.price)}</div>
         <p class="m-0 js-details" data-details>${it.details||''}</p>
         <p class="m-0 small js-address" data-address>${it.address||''}</p>
-        <div class="py-3">
+        <div class="py-3 flex flex-wrap gap-2">
+          <a class="btn" href="${detailUrl}">View details</a>
           <button class="btn js-save-listing" aria-pressed="false" title="Save to Shortlist">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27l6.18 3.73-1.64-7.03L21.5 9.24l-7.19-.61L12 2 9.69 8.63 2.5 9.24l4.96 4.73L5.82 21z"/></svg>
             Save
