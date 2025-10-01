@@ -447,7 +447,39 @@ I am an ' + v + ' interested in touring...'); }
           });
           const json = await res.json();
           if(json.success){
-            result.textContent = 'Message sent successfully.';
+            result.textContent = '';
+            const schedulingLink = json.schedulingLink;
+            const schedulingLabel = json.schedulingLabel || 'Schedule a meeting';
+            const alternateCtas = Array.isArray(json.alternateCtas) ? json.alternateCtas : [];
+
+            if(schedulingLink){
+              const lead = document.createElement('span');
+              lead.textContent = 'Thanks! You can '; lead.className = 'cta-lead';
+              const link = document.createElement('a');
+              link.href = schedulingLink;
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+              link.textContent = schedulingLabel;
+              result.append(lead, link, document.createTextNode(' to find time on my calendar.'));
+            } else if(alternateCtas.length){
+              const lead = document.createElement('p');
+              lead.textContent = 'Message sent! While you wait, here are a few next steps:';
+              const list = document.createElement('ul');
+              alternateCtas.forEach((cta)=>{
+                if(!cta || !cta.href || !cta.label) return;
+                const item = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = cta.href;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = cta.label;
+                item.appendChild(link);
+                list.appendChild(item);
+              });
+              result.append(lead, list);
+            } else {
+              result.textContent = 'Message sent successfully.';
+            }
             form.reset();
           }else{
             throw new Error(json.error||'Error');
