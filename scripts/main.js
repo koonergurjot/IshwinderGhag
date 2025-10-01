@@ -439,7 +439,8 @@ I am an ' + v + ' interested in touring...'); }
         const data = Object.fromEntries(new FormData(form));
         result.textContent = 'Sending…';
         try {
-          const res = await fetch('/api/contact', {
+          const endpoint = new URL('/.netlify/functions/contact', window.location.origin);
+          const res = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
