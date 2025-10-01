@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2025-10-01T22:04:41.299Z",
+  "listings": [
+    {
+      "id": "123",
+      "title": "123 Example Ave",
+      "type": "Residential",
+      "city": "Surrey",
+      "price": 1249900,
+      "priceDisplay": "$1,249,900",
+      "address": "123 Example Ave, Surrey, BC",
+      "coords": [
+        49.1913,
+        -122.849
+      ],
+      "cover": "/assets/listings/123/cover.jpg",
+      "webp": "/assets/listings/123/cover.webp",
+      "gallery": [
+        "/assets/listings/123/cover.jpg"
+      ],
+      "details": "4 bed • 3 bath • 2,100 sqft • Lot 4,000 sqft",
+      "badge": "New"
+    },
+    {
+      "id": "456",
+      "title": "456 Market Street",
+      "type": "Commercial",
+      "city": "Langley",
+      "price": 2190000,
+      "priceDisplay": "$2,190,000",
+      "address": "456 Market St, Langley, BC",
+      "coords": [
+        49.1044,
+        -122.6609
+      ],
+      "cover": "/assets/ishwinder/hero-1280.jpg",
+      "webp": "/assets/ishwinder/hero-1280.jpg",
+      "gallery": [
+        "/assets/ishwinder/hero-1280.jpg"
+      ],
+      "details": "Retail + Office • 5,800 sqft",
+      "badge": "Featured"
+    },
+    {
+      "id": "789",
+      "title": "789 Industrial Way",
+      "type": "Industrial",
+      "city": "Abbotsford",
+      "price": 3490000,
+      "priceDisplay": "$3,490,000",
+      "address": "789 Industrial Way, Abbotsford, BC",
+      "coords": [
+        49.0504,
+        -122.3045
+      ],
+      "cover": "/assets/ishwinder/hero-960.jpg",
+      "webp": "/assets/ishwinder/hero-960.jpg",
+      "gallery": [
+        "/assets/ishwinder/hero-960.jpg"
+      ],
+      "details": "Warehouse • 12,000 sqft • Clear height 26'",
+      "badge": "Hot"
+    }
+  ]
+}

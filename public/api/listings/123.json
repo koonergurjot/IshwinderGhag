@@ -1,0 +1,21 @@
+{
+  "id": "123",
+  "title": "123 Example Ave",
+  "type": "Residential",
+  "city": "Surrey",
+  "price": 1249900,
+  "priceDisplay": "$1,249,900",
+  "address": "123 Example Ave, Surrey, BC",
+  "coords": [
+    49.1913,
+    -122.849
+  ],
+  "cover": "/assets/listings/123/cover.jpg",
+  "webp": "/assets/listings/123/cover.webp",
+  "gallery": [
+    "/assets/listings/123/cover.jpg"
+  ],
+  "details": "4 bed • 3 bath • 2,100 sqft • Lot 4,000 sqft",
+  "badge": "New",
+  "generatedAt": "2025-10-01T22:04:41.299Z"
+}
