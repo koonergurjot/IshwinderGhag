@@ -138,6 +138,30 @@ section{ padding: clamp(1.25rem, 3vw, 2.25rem) 0; }
 .meta{ color: var(--muted); margin:.35rem 0 .5rem; }
 .price{ font-size: 1.25rem; color: var(--ink); }
 
+/* Testimonials ----------------------------------------------------------- */
+#testimonials{ background: color-mix(in oklab, var(--card) 60%, transparent); }
+#testimonials .testimonial-subhead{ color: var(--muted); }
+#testimonials .testimonial-card .card-body{ display: flex; flex-direction: column; gap: .75rem; height: 100%; }
+#testimonials .testimonial-quote{
+  position: relative;
+  margin: 0;
+  padding-left: 1.8rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+#testimonials .testimonial-quote::before{
+  content: '“';
+  position: absolute;
+  left: .2rem;
+  top: -.35rem;
+  font-size: 3rem;
+  line-height: 1;
+  color: color-mix(in oklab, var(--primary) 35%, transparent);
+}
+#testimonials .testimonial-author{ display: flex; flex-direction: column; gap: .15rem; font-weight: 600; color: var(--ink); }
+#testimonials .testimonial-name{ font-weight: 700; }
+
 /* Buttons & pills -------------------------------------------------------- */
 .btn{
   display: inline-flex; align-items: center; justify-content: center; gap:.5rem;
