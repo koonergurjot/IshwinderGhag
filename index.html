@@ -24,6 +24,7 @@
   <link rel="preload" as="image" href="/assets/ishwinder/hero-1280.jpg" imagesrcset="/assets/ishwinder/hero-1920.jpg 1920w, /assets/ishwinder/hero-1280.jpg 1280w, /assets/ishwinder/hero-960.jpg 960w" imagesizes="100vw">
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -211,6 +212,8 @@
         </div>
       </div>
     </section>
+
+    <section id="dynamic-listings"></section>
 
     <section id="saved-listings" class="fade-up">
       <div class="container">
@@ -577,6 +580,9 @@
     ]
   }
   </script>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7kP6+IiVbGi4ZTSdKcF1R9N0wHf3A1bB6ZgmXY=" crossorigin=""></script>
+    <script defer src="/js/listings.js"></script>
+    <script defer src="/js/listings.render.js"></script>
     <script defer src="/js/lightbox.js"></script>
     <script defer src="/js/shortlist.js"></script>
     <script defer src="/js/onepager.js"></script>
@@ -588,6 +594,7 @@
         window.initShortlist?.();
         window.initOnePager?.();
         window.initForms?.();
+        window.renderListingsUI?.('#dynamic-listings');
       });
     </script>
 </body>

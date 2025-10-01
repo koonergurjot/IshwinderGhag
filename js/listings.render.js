@@ -131,16 +131,16 @@
   }
 
   function cardTpl(it){
-    const img = it.cover;
-    const webp = it.webp && it.webp.endsWith('.webp') ? it.webp : null;
+    const gallery = Array.isArray(it.gallery) && it.gallery.length ? it.gallery : [it.cover];
+    const first = gallery[0];
     return `
     <article class="card col-12" data-id="${it.id}">
-      <a href="${img}" data-gallery class="block">
-        <picture>
-          ${webp ? `<source type="image/webp" srcset="${webp}">` : ''}
-          <img class="listing-photo" src="${img}" alt="${it.title}">
-        </picture>
-      </a>
+      <div class="listing-gallery" data-gallery>
+        <a href="${first}" class="block" data-caption="${it.title.replace(/"/g,'&quot;')}">
+          <img class="listing-photo" src="${it.cover}" alt="${it.title}" style="pointer-events:none;">
+        </a>
+        ${gallery.slice(1).map(src=>`<a href="${src}" hidden aria-hidden="true" tabindex="-1" data-caption="${it.title.replace(/"/g,'&quot;')}"></a>`).join('')}
+      </div>
       <div class="card-body">
         <h3 class="m-0 js-title" data-title>${it.title}</h3>
         <div class="meta">${it.type} • ${it.city}</div>
