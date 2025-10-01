@@ -2,6 +2,7 @@
 /*! shortlist.js — simple localStorage "saved listings" with ⭐ toggle */
 (function(){
   const KEY = 'shortlistV1';
+  let bound = false;
 
   function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{} }catch{ return {} } }
   function save(data){ localStorage.setItem(KEY, JSON.stringify(data)); }
@@ -84,7 +85,10 @@
   }
 
   function initShortlist(){
-    document.addEventListener('click', onClick);
+    if(!bound){
+      document.addEventListener('click', onClick);
+      bound = true;
+    }
     hydrate(); renderShortlist();
   }
 

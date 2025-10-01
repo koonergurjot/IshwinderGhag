@@ -462,4 +462,3 @@ I am an ' + v + ' interested in touring...'); }
       });
     })();
 
-    window.initShortlist?.();
