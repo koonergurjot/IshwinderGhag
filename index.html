@@ -571,5 +571,13 @@
     <script defer src="/js/onepager.js"></script>
     <script defer src="/js/forms.js"></script>
     <script defer src="scripts/main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        window.initLightbox?.();
+        window.initShortlist?.();
+        window.initOnePager?.();
+        window.initForms?.();
+      });
+    </script>
 </body>
 </html>
