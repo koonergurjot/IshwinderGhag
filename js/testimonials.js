@@ -1,25 +1,85 @@
-
-/*! testimonials.js — simple auto-rotating testimonials strip */
+/*! testimonials.js — inject testimonials grid */
 (function(){
-  const DATA = [
-    { quote: "Professional, responsive, and results‑driven. Sold over asking.", name: "Parm S." },
-    { quote: "Found us the perfect industrial bay in days.", name: "Aman D." },
-    { quote: "Clear strategy and great negotiation.", name: "Ritu & Nav." }
+  const testimonials = [
+    {
+      quote: 'Ishwinder navigated a complex land assembly for us and brought qualified developers to the table faster than expected.',
+      name: 'Paramjit S.',
+      role: 'Director, Fraser Valley Holdings'
+    },
+    {
+      quote: 'From underwriting to tours, his industrial disposition process was buttoned up and delivered the certainty our vendors needed.',
+      name: 'Melanie R.',
+      role: 'Asset Manager, Metro Vancouver Industrial REIT'
+    },
+    {
+      quote: 'He translated municipal policy into a clear path forward and kept our stakeholders aligned through every milestone.',
+      name: 'Daniel K.',
+      role: 'Principal, North Shore Development Group'
+    }
   ];
-  function initTestimonials(){
-    const root = document.getElementById('testimonials');
-    if(!root) return;
-    root.innerHTML = `
-      <section class="container">
-        <div class="section-title"><h2>What clients say</h2><span class="small">A few recent notes</span></div>
-        <div class="card" id="t-wrap" style="padding:1rem;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center">
-          <blockquote class="m-0" id="t-quote" style="font-size:1.1rem"></blockquote>
-        </div>
-      </section>`;
-    let i=0; const el = document.getElementById('t-quote');
-    function show(){ el.textContent = `“${DATA[i].quote}” — ${DATA[i].name}`; }
-    show();
-    setInterval(()=>{ i=(i+1)%DATA.length; show(); }, 4000);
+
+  function createCard({ quote, name, role }){
+    const card = document.createElement('article');
+    card.className = 'card col-4 fade-up testimonial-card';
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+
+    const quoteEl = document.createElement('p');
+    quoteEl.className = 'testimonial-quote';
+    quoteEl.textContent = quote;
+
+    const author = document.createElement('div');
+    author.className = 'testimonial-author';
+
+    const nameEl = document.createElement('span');
+    nameEl.className = 'testimonial-name';
+    nameEl.textContent = name;
+
+    const roleEl = document.createElement('span');
+    roleEl.className = 'small testimonial-role';
+    roleEl.textContent = role;
+
+    author.append(nameEl, roleEl);
+    body.append(quoteEl, author);
+    card.append(body);
+
+    return card;
   }
+
+  function buildSection(section){
+    const container = document.createElement('div');
+    container.className = 'container';
+
+    const title = document.createElement('div');
+    title.className = 'section-title';
+
+    const heading = document.createElement('h2');
+    heading.textContent = 'Testimonials';
+    title.appendChild(heading);
+
+    const subhead = document.createElement('div');
+    subhead.className = 'small testimonial-subhead';
+    subhead.textContent = 'What clients and partners say.';
+    title.appendChild(subhead);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid testimonials-grid';
+
+    testimonials.forEach((item) => {
+      grid.appendChild(createCard(item));
+    });
+
+    container.append(title, grid);
+    section.appendChild(container);
+    section.dataset.enhanced = 'true';
+  }
+
+  function initTestimonials(){
+    const section = document.getElementById('testimonials');
+    if(!section || section.dataset.enhanced === 'true') return;
+    buildSection(section);
+  }
+
   window.initTestimonials = initTestimonials;
 })();
