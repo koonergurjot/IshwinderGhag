@@ -1,7 +1,7 @@
 const qs = require('querystring');
 const sanitizeHtml = require('sanitize-html');
 const sgMail = require('@sendgrid/mail');
-const fetch = require('node-fetch');
+const fetch = global.fetch ? (...args) => global.fetch(...args) : require('node-fetch');
 const crypto = require('crypto');
 
 const {
@@ -102,6 +102,21 @@ function sanitizeCalculators(rawCalculators) {
   }, {});
 }
 
+function sanitizeTimeToSubmit(rawTtv) {
+  if (rawTtv == null) return 0;
+  const numeric = parseInt(String(rawTtv).replace(/[^0-9-]/g, ''), 10);
+  if (Number.isNaN(numeric) || numeric < 0) {
+    return 0;
+  }
+  return numeric;
+}
+
+function stripAntiSpamFields(payload) {
+  if (!payload || typeof payload !== 'object') return {};
+  const { honeypot, timeToSubmitMs, ...rest } = payload;
+  return rest;
+}
+
 function buildPayload(data = {}) {
   const sanitized = {
     name: sanitizeText(data.name),
@@ -111,7 +126,9 @@ function buildPayload(data = {}) {
     intent: sanitizeText(data.intent || data.contextIntent),
     shortlist: sanitizeArray(data.shortlist || data.shortlistIds),
     calculators: sanitizeCalculators(data.calculators || data.calculatorData),
-    meta: {}
+    meta: {},
+    honeypot: sanitizeText(data.website),
+    timeToSubmitMs: sanitizeTimeToSubmit(data.ttv)
   };
 
   const optionalFields = [
@@ -136,6 +153,12 @@ function buildPayload(data = {}) {
 }
 
 function validatePayload(payload) {
+  if (payload.honeypot) {
+    return 'Message is required';
+  }
+  if (typeof payload.timeToSubmitMs === 'number' && payload.timeToSubmitMs < 3000) {
+    return 'Message is required';
+  }
   if (!payload.name) {
     return 'Name is required';
   }
@@ -159,7 +182,9 @@ async function sendEmail(payload, schedulingInfo) {
     throw new Error('Email configuration is incomplete');
   }
 
-  const templateId = getTemplateId(payload.intent);
+  const safePayload = stripAntiSpamFields(payload);
+
+  const templateId = getTemplateId(safePayload.intent);
   if (!templateId) {
     throw new Error('No SendGrid template configured for this intent');
   }
@@ -177,15 +202,15 @@ async function sendEmail(payload, schedulingInfo) {
     from: CONTACT_FROM_EMAIL,
     templateId,
     dynamicTemplateData: {
-      name: payload.name,
-      email: payload.email,
-      phone: payload.phone,
-      message: payload.message,
-      intent: payload.intent || 'general',
-      shortlist: payload.shortlist,
-      calculators: payload.calculators,
-      meta: payload.meta,
-      submitted_at: payload.createdAt,
+      name: safePayload.name,
+      email: safePayload.email,
+      phone: safePayload.phone,
+      message: safePayload.message,
+      intent: safePayload.intent || 'general',
+      shortlist: safePayload.shortlist,
+      calculators: safePayload.calculators,
+      meta: safePayload.meta,
+      submitted_at: safePayload.createdAt,
       scheduling_link: schedulingInfo?.url || null,
       scheduling_label: schedulingInfo?.label || null
     }
@@ -200,6 +225,7 @@ async function sendEmail(payload, schedulingInfo) {
 
 async function syncCrm(payload) {
   if (!CRM_API_URL) return;
+  const safePayload = stripAntiSpamFields(payload);
   try {
     const res = await fetch(CRM_API_URL, {
       method: 'POST',
@@ -209,16 +235,16 @@ async function syncCrm(payload) {
       },
       body: JSON.stringify({
         contact: {
-          name: payload.name,
-          email: payload.email,
-          phone: payload.phone
+          name: safePayload.name,
+          email: safePayload.email,
+          phone: safePayload.phone
         },
-        intent: payload.intent,
-        shortlistIds: payload.shortlist,
-        calculators: payload.calculators,
-        message: payload.message,
-        metadata: payload.meta,
-        submittedAt: payload.createdAt
+        intent: safePayload.intent,
+        shortlistIds: safePayload.shortlist,
+        calculators: safePayload.calculators,
+        message: safePayload.message,
+        metadata: safePayload.meta,
+        submittedAt: safePayload.createdAt
       })
     });
     if (!res.ok) {
@@ -232,15 +258,16 @@ async function syncCrm(payload) {
 
 async function postLeadWebhook(payload, schedulingInfo) {
   if (!LEAD_WEBHOOK_URL) return;
+  const safePayload = stripAntiSpamFields(payload);
   try {
     const lines = [
       `New contact submission`,
-      `• Name: ${payload.name}`,
-      `• Email: ${payload.email}`,
-      payload.phone ? `• Phone: ${payload.phone}` : null,
-      payload.intent ? `• Intent: ${payload.intent}` : null,
-      payload.shortlist.length ? `• Shortlist: ${payload.shortlist.join(', ')}` : null,
-      payload.message ? `• Message: ${payload.message}` : null,
+      `• Name: ${safePayload.name}`,
+      `• Email: ${safePayload.email}`,
+      safePayload.phone ? `• Phone: ${safePayload.phone}` : null,
+      safePayload.intent ? `• Intent: ${safePayload.intent}` : null,
+      safePayload.shortlist.length ? `• Shortlist: ${safePayload.shortlist.join(', ')}` : null,
+      safePayload.message ? `• Message: ${safePayload.message}` : null,
       schedulingInfo?.url ? `• Scheduling: ${schedulingInfo.url}` : null
     ].filter(Boolean);
 
@@ -336,18 +363,19 @@ async function requestSchedulingLink(intent, payload) {
 }
 
 function buildPersistenceRecord(payload, schedulingInfo) {
+  const safePayload = stripAntiSpamFields(payload);
   return {
     id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`,
-    name: payload.name,
-    email: payload.email,
-    phone: payload.phone,
-    intent: payload.intent,
-    shortlist: payload.shortlist,
-    calculators: payload.calculators,
-    message: payload.message,
-    metadata: payload.meta,
+    name: safePayload.name,
+    email: safePayload.email,
+    phone: safePayload.phone,
+    intent: safePayload.intent,
+    shortlist: safePayload.shortlist,
+    calculators: safePayload.calculators,
+    message: safePayload.message,
+    metadata: safePayload.meta,
     scheduling_link: schedulingInfo?.url || null,
-    submitted_at: payload.createdAt
+    submitted_at: safePayload.createdAt
   };
 }
 
@@ -399,7 +427,7 @@ async function persistSubmission(payload, schedulingInfo) {
   }
 }
 
-exports.handler = async (event) => {
+const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers: baseHeaders };
   }
@@ -489,4 +517,11 @@ exports.handler = async (event) => {
       body: JSON.stringify({ success: false, error: 'Server error' })
     };
   }
+};
+
+module.exports = {
+  handler,
+  buildPayload,
+  validatePayload,
+  stripAntiSpamFields
 };
